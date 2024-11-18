@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Joanna&#39;s Blog</title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on Joanna&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript-Variable</title>
+      <link>//localhost:1313/posts/js-variable/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/js-variable/</guid>
+      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JavaScript-閉包Closuer</title>
+      <link>//localhost:1313/posts/03-js-closure/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/03-js-closure/</guid>
+      <description>&lt;p&gt;關於 Closure 閉包與自由變數&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python-裝飾器Decorator</title>
+      <link>//localhost:1313/posts/js-decorator/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/js-decorator/</guid>
+      <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>面試題合集</title>
+      <link>//localhost:1313/posts/interview-q/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/interview-q/</guid>
+      <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Start!</title>
+      <link>//localhost:1313/posts/01-article-title/</link>
+      <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/01-article-title/</guid>
+      <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>選擇ASTRO Camp的原因</title>
+      <link>//localhost:1313/posts/02-school/</link>
+      <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/02-school/</guid>
+      <description>&lt;p&gt;轉職需要的不只是勇氣&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
