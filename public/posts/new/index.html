@@ -3,53 +3,55 @@
   x-data
   :class="$store.darkMode.class()"
   :data-theme="$store.darkMode.theme()">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript-閉包Closuer | Joanna&#39;s Blog</title>
+    <title>Python-裝飾器Decorator | Joanna&#39;s Blog</title>
 
     
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
 
-<link rel="canonical" href="//localhost:1313/posts/js-closure/" />
+<link rel="canonical" href="https://joannalei21.github.io/posts/new/" />
 
 
 
 <meta name="author" content="Joanna Lei" />
-<meta name="description" content="關於 Closure 閉包與自由變數
+<meta name="description" content="Decorator
 " />
 
 
-<meta name="keywords" content="JavaScript">
+<meta name="keywords" content="Python">
 
 
 
 <meta name="generator" content="Hugo 0.138.0">
 
 
-<meta property="og:url" content="//localhost:1313/posts/js-closure/">
+<meta property="og:url" content="https://joannalei21.github.io/posts/new/">
   <meta property="og:site_name" content="Joanna&#39;s Blog">
-  <meta property="og:title" content="JavaScript-閉包Closuer">
-  <meta property="og:description" content="關於 Closure 閉包與自由變數">
+  <meta property="og:title" content="Python-裝飾器Decorator">
+  <meta property="og:description" content="Decorator">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-11-18T00:00:00+00:00">
     <meta property="article:modified_time" content="2024-11-18T00:00:00+00:00">
-    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Python">
 
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScript-閉包Closuer">
-  <meta name="twitter:description" content="關於 Closure 閉包與自由變數">
+  <meta name="twitter:title" content="Python-裝飾器Decorator">
+  <meta name="twitter:description" content="Decorator">
 
 
 
 
-<link rel="stylesheet" href="/css/output.css" />
+  
+
+<link rel="stylesheet" href="/css/output.min.css" />
 
 
 
@@ -99,7 +101,7 @@
       
       <div>
         
-        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
+        <a href="https://joannalei21.github.io/" class="text-lg font-semibold cursor-pointer">
           Joanna&#39;s Bolg
         </a>
         
@@ -253,15 +255,15 @@
     
     <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
       
-  <meta itemprop="name" content="JavaScript-閉包Closuer">
-  <meta itemprop="description" content="關於 Closure 閉包與自由變數">
+  <meta itemprop="name" content="Python-裝飾器Decorator">
+  <meta itemprop="description" content="Decorator">
   <meta itemprop="datePublished" content="2024-11-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-11-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="16">
-  <meta itemprop="keywords" content="JavaScript">
+  <meta itemprop="wordCount" content="28">
+  <meta itemprop="keywords" content="Python">
 
       <header>
-        <h1 itemprop="headline">JavaScript-閉包Closuer</h1>
+        <h1 itemprop="headline">Python-裝飾器Decorator</h1>
         <p class="text-sm">
           
             Monday, Nov 18, 2024
@@ -302,19 +304,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=JavaScript-%e9%96%89%e5%8c%85Closuer&amp;url=//localhost:1313/posts/js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=Python-%e8%a3%9d%e9%a3%be%e5%99%a8Decorator&amp;url=https://joannalei21.github.io/posts/new/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=https://joannalei21.github.io/posts/new/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=JavaScript-%e9%96%89%e5%8c%85Closuer%20//localhost:1313/posts/js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=Python-%e8%a3%9d%e9%a3%be%e5%99%a8Decorator%20https://joannalei21.github.io/posts/new/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -328,24 +330,33 @@
       </header>
 
       
-      <img src="/img/.jpg" alt="JavaScript-閉包Closuer" />
+      <img src="/img/.jpg" alt="Python-裝飾器Decorator" />
       
 
-      <p>關於 Closure 閉包與自由變數</p>
-<p>The remaining content of your post.</p>
+      <p>Decorator</p>
+<p>裝飾器
+1 階-過水
+2 階-帶參數
+3 階-會回傳裝飾器的裝飾器</p>
 
       
       <div class="divider"></div>
       <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
         
-        <div></div>
+        <a class="group btn btn-outline" href="/posts/js-decorator/" title="Python-裝飾器Decorator">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Python-裝飾器Decorator</span>
+          </div>
+        </a>
         
 
         
-        <a class="group btn btn-outline" href="/posts/01-article-title/" title="Start!">
+        <a class="group btn btn-outline" href="/posts/interview-q/" title="面試題合集">
           <div class="inline-flex flex-col items-end">
             <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
-            <span class="max-w-48 truncate">Start!</span>
+            <span class="max-w-48 truncate">面試題合集</span>
           </div>
           <ion-icon name="chevron-forward"></ion-icon>
         </a>
@@ -508,12 +519,16 @@
 
   
   
-  <script src="/js/grid.js"></script>
+    
+  
+  <script src="/js/grid.min.js"></script>
 
 
 
 
-<script src="/js/main.js"></script>
+  
+
+<script src="/js/main.min.js"></script>
 
     
 
