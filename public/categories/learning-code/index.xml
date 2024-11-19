@@ -6,8 +6,22 @@
     <description>Recent content in Learning Code on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/learning-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python-Set</title>
+      <link>/posts/py-set/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/py-set/</guid>
+      <description>&lt;h2 id=&#34;set-集合&#34;&gt;Set 集合&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title>Python-Tuple</title>
+      <link>/posts/py-tuple/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/py-tuple/</guid>
+      <description>&lt;h2 id=&#34;什麼是tuple&#34;&gt;什麼是&lt;strong&gt;Tuple&lt;/strong&gt;&lt;/h2&gt;</description>
+    </item>
     <item>
       <title>HTML-文件設定</title>
       <link>/posts/html-setting/</link>
@@ -17,17 +31,24 @@
     </item>
     <item>
       <title>JavaScript-Variable</title>
-      <link>/posts/js-variable/</link>
+      <link>/posts/js-variable-hosting/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/js-variable/</guid>
+      <guid>/posts/js-variable-hosting/</guid>
       <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
     </item>
     <item>
       <title>JavaScript-閉包Closuer</title>
-      <link>/posts/03-js-closure/</link>
+      <link>/posts/js-closure/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/03-js-closure/</guid>
+      <guid>/posts/js-closure/</guid>
       <description>&lt;p&gt;關於 Closure 閉包與自由變數&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python-Function</title>
+      <link>/posts/py-function/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/py-function/</guid>
+      <description>&lt;h2 id=&#34;在-python-裡的函數&#34;&gt;在 Python 裡的函數&lt;/h2&gt;</description>
     </item>
     <item>
       <title>Python-裝飾器Decorator</title>
@@ -38,16 +59,16 @@
     </item>
     <item>
       <title>Start!</title>
-      <link>/posts/01-article-title/</link>
+      <link>/posts/hugo-buildup-webpage/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/01-article-title/</guid>
+      <guid>/posts/hugo-buildup-webpage/</guid>
       <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
     </item>
     <item>
       <title>選擇ASTRO Camp的原因</title>
-      <link>/posts/02-school/</link>
+      <link>/posts/astro-capm/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/02-school/</guid>
+      <guid>/posts/astro-capm/</guid>
       <description>&lt;h2 id=&#34;轉職需要的不只是勇氣&#34;&gt;轉職需要的不只是勇氣&lt;/h2&gt;</description>
     </item>
   </channel>

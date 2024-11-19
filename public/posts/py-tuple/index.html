@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-Tuple | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="/posts/py-tuple/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="什麼是Tuple" />
+
+
+<meta name="keywords" content="Python">
+
+
+
+<meta name="generator" content="Hugo 0.138.0">
+
+
+<meta property="og:url" content="/posts/py-tuple/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Python-Tuple">
+  <meta property="og:description" content="什麼是Tuple">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python-Tuple">
+  <meta name="twitter:description" content="什麼是Tuple">
+
+
+
+
+  
+
+<link rel="stylesheet" href="/css/output.min.css" />
+
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什麼是tuple">什麼是<strong>Tuple</strong></a>
+      <ul>
+        <li><a href="#tuple-的定義">Tuple 的定義</a></li>
+        <li><a href="#建立-tuple">建立 Tuple</a></li>
+      </ul>
+    </li>
+    <li><a href="#常用的-tuple-操作">常用的 Tuple 操作</a>
+      <ul>
+        <li><a href="#拿裡面的資料">拿裡面的資料</a></li>
+        <li><a href="#查詢方法">查詢方法</a></li>
+        <li><a href="#tuple-的好處">Tuple 的好處</a></li>
+      </ul>
+    </li>
+    <li><a href="#複製-tuple">複製 Tuple</a></li>
+    <li><a href="#動動腦">動動腦</a></li>
+    <li><a href="#選串列還是-tuple">選串列還是 Tuple?</a></li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Python-Tuple">
+  <meta itemprop="description" content="什麼是Tuple">
+  <meta itemprop="datePublished" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1578">
+  <meta itemprop="keywords" content="Python">
+
+      <header>
+        <h1 itemprop="headline">Python-Tuple</h1>
+        <p class="text-sm">
+          
+            Tuesday, Nov 19, 2024
+          
+
+          | <span>4 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Tuesday, Nov 19, 2024
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Python-Tuple&amp;url=/posts/py-tuple/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=/posts/py-tuple/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Python-Tuple%20/posts/py-tuple/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/Tuple.png" alt="Python-Tuple" />
+      
+
+      <h2 id="什麼是tuple">什麼是<strong>Tuple</strong></h2>
+<h3 id="tuple-的定義">Tuple 的定義</h3>
+<p>中文稱作：元組/數組，中文從字面翻譯看起來，還是不是很清楚是什麼。<br>
+可以直接使用英文稱呼，發音是 two-pull or top-pull<br>
+它是一種可以裝很多值的資料型態，長這樣： <code>（ x, x , x )</code></p>
+<p>建立 Tuple 時，使用<code>()</code>，並用<code>,</code>把資料分開即可。<br>
+看起來很像串列，只是 Tuple 是不可變的(Immutable)，跟字串一樣</p>
+<h3 id="建立-tuple">建立 Tuple</h3>
+<p>Tuple 的格式是<code>（ x, x , x )</code> ，在當只有一個值的時候，要記得給它<code>,</code>，長這個樣子<code>(x,)</code>，當沒有<code>,</code>時，<code>(x)</code>就只是<code>x</code>，而非一個 Tuple。</p>
+<p>另外，Tuple 的<code>()</code>是可以省略的，只是在閱讀上容易混亂，所以我還是會乖乖的給他穿上<code>()</code></p>
+<hr>
+<h2 id="常用的-tuple-操作">常用的 Tuple 操作</h2>
+<h3 id="拿裡面的資料">拿裡面的資料</h3>
+<p>Tuple 和串列一樣，資料的值是有順序的，使用索引值可以拿到裡面的資料。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;小白&#34;</span>,<span style="color:#e6db74">&#34;小黑&#34;</span>,<span style="color:#e6db74">&#34;三花&#34;</span>,<span style="color:#e6db74">&#34;胖橘&#34;</span>)
+</span></span><span style="display:flex;"><span>cat[<span style="color:#ae81ff">0</span>] <span style="color:#75715e">#&#34;小白&#34;</span>
+</span></span><span style="display:flex;"><span>cat[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e">#&#34;胖橘&#34;</span>
+</span></span></code></pre></div><p>Tuple 裡面的值是不可以改變的，但整個 Tuple 可以重新指定(Reassignment)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#嘗試改變會得到錯誤訊息</span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;小白&#34;</span>,<span style="color:#e6db74">&#34;小黑&#34;</span>,<span style="color:#e6db74">&#34;三花&#34;</span>,<span style="color:#e6db74">&#34;胖橘&#34;</span>)
+</span></span><span style="display:flex;"><span>cat[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;大白&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Traceback(most recent call last)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>  File<span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TypeError</span>: <span style="color:#e6db74">&#34;tuple&#34;</span> object does <span style="color:#f92672">not</span> support item assignment<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#重新指定(Reassignment)</span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;小白&#34;</span>,<span style="color:#e6db74">&#34;小黑&#34;</span>,<span style="color:#e6db74">&#34;三花&#34;</span>,<span style="color:#e6db74">&#34;胖橘&#34;</span>)
+</span></span><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;white&#34;</span>,<span style="color:#e6db74">&#34;black&#34;</span>,<span style="color:#e6db74">&#34;flower&#34;</span>,<span style="color:#e6db74">&#34;fatty&#34;</span>)
+</span></span></code></pre></div><p>Tuple 是可迭代物件，跟串列一樣，可以使用<code>for...in...</code>的方式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>cats <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;小白&#34;</span>,<span style="color:#e6db74">&#34;小黑&#34;</span>,<span style="color:#e6db74">&#34;三花&#34;</span>,<span style="color:#e6db74">&#34;胖橘&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> cat <span style="color:#f92672">in</span> cats:
+</span></span><span style="display:flex;"><span>  print(cat)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&#34;小白&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&#34;小黑&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&#34;三花&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&#34;胖橘&#34;</span>
+</span></span></code></pre></div><h3 id="查詢方法">查詢方法</h3>
+<p>與串列的查詢方法幾乎相同</p>
+<p><code>.len()</code> 算個數<br>
+<code>.count()</code> 算數量<br>
+<code>.index()</code> 取的索引值</p>
+<p><strong>注意</strong><br>
+因為 Tuple 裡面的值是無法改變的，所以下面這些發法無法使用：<br>
+<code>.append()</code>增加、 <code>.inser()</code>插入、<code>.remove()</code>刪除，使用的話會得到<code>AttributeError</code>的錯誤訊息</p>
+<p><strong>特殊情況</strong><br>
+雖然 Tuple 不能變動，但當帶入的值是一個可變動的資料時（如串列），那針對可變動的資料我們可以去改變它。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;小白&#34;</span>,<span style="color:#e6db74">&#34;小黑&#34;</span>,<span style="color:#e6db74">&#34;三花&#34;</span>,<span style="color:#e6db74">&#34;胖橘&#34;</span>,[<span style="color:#e6db74">&#34;小貓A&#34;</span>,<span style="color:#e6db74">&#34;小貓B&#34;</span>,<span style="color:#e6db74">&#34;小貓B&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[]裡的值可以變動，不會因Tuple而被限制</span>
+</span></span></code></pre></div><h3 id="tuple-的好處">Tuple 的好處</h3>
+<p>Tuple 在使用上與串列類似，最大的差別在於 Tuple 是<strong>不可變的</strong>。<br>
+這樣設定的好處是，當資料被當作參數在各個函數之間穿梭時，不用擔心會一不小心被哪個函數改到裡面的值～因為 Tuplr 不接受</p>
+<hr>
+<h2 id="複製-tuple">複製 Tuple</h2>
+<p>複習一下串列的複製方法：</p>
+<p>1.使用<code>list()</code>函數<br>
+2.<del>使用<code>.copy()</code></del><br>
+3.使用<code>copy</code>模組的<code>copy()</code>函式<br>
+4.使用切片 slice</p>
+<p>上面被劃刪除線的，就是 Tuple 無法使用的
+<strong>注意</strong><br>
+雖然看起來是複製了一個 Tuple，但因為 Tuple 不能改，所以系統指到的資料會是同一個，也就是說不管複製幾次，系統資料都是指到同一個 Tuple 資料</p>
+<h2 id="動動腦">動動腦</h2>
+<p>來看看下面的 Tuple 是否相等
+Q1：相同的值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>t1 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>t2 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t1 <span style="color:#f92672">==</span> t2
+</span></span><span style="display:flex;"><span>t1 <span style="color:#f92672">is</span> t2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Ture 值相等</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#False 位置不相等</span>
+</span></span></code></pre></div><p>Q2：空 Tuple</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>t3 <span style="color:#f92672">=</span> ()
+</span></span><span style="display:flex;"><span>t4 <span style="color:#f92672">=</span> tuple()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t3 <span style="color:#f92672">==</span> t4
+</span></span><span style="display:flex;"><span>t3 <span style="color:#f92672">is</span> t4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#True 都是空的</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#True ！？</span>
+</span></span></code></pre></div><p>這邊，最後的<code>t3 is t4</code>會得到 Ture 是因為，反正都是空的，也不能改變值，那就給你同一個位置就好，不用浪費空間。這是空 Tuple 才有的特性，實作上不太會運用到。</p>
+<hr>
+<h2 id="選串列還是-tuple">選串列還是 Tuple?</h2>
+<p>新手小白的我實在沒什麼感覺，好像串列的運用上更自由一些，所以這邊先照老師的建議來使用：<br>
+<strong>1.是否會變更資料：</strong></p>
+<ul>
+<li>會變更使用串列。</li>
+<li>不會變更使用 Tuple，確保使用過程中資料不會被變動。</li>
+</ul>
+<p><strong>2.看囊括的資料型態決定：</strong></p>
+<ul>
+<li>若為同質性(Homogeneous)如都是字串或數字時，用串列。</li>
+<li>若為異質性(Heterogeneous)如同時有字串、數字、字典時，用 Tuple。</li>
+</ul>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a class="group btn btn-outline" href="/posts/py-set/" title="Python-Set">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Python-Set</span>
+          </div>
+        </a>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/html-setting/" title="HTML-文件設定">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">HTML-文件設定</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p class="text-sm">
+    🌱
+    <span class="text-base-content/60">
+      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
+      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
+    >
+  </p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p class="text-sm">
+    🌱
+    <span class="text-base-content/60">
+      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
+      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
+    >
+  </p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+    
+  
+  <script src="/js/grid.min.js"></script>
+
+
+
+
+  
+
+<script src="/js/main.min.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

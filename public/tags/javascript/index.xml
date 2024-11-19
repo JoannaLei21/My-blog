@@ -10,30 +10,30 @@
     <atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript-Variable</title>
-      <link>/posts/js-variable/</link>
+      <link>/posts/js-variable-hosting/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/js-variable/</guid>
+      <guid>/posts/js-variable-hosting/</guid>
       <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
     </item>
     <item>
       <title>JavaScript-閉包Closuer</title>
-      <link>/posts/03-js-closure/</link>
+      <link>/posts/js-closure/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/03-js-closure/</guid>
+      <guid>/posts/js-closure/</guid>
       <description>&lt;p&gt;關於 Closure 閉包與自由變數&lt;/p&gt;</description>
     </item>
     <item>
       <title>Start!</title>
-      <link>/posts/01-article-title/</link>
+      <link>/posts/hugo-buildup-webpage/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/01-article-title/</guid>
+      <guid>/posts/hugo-buildup-webpage/</guid>
       <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
     </item>
     <item>
       <title>選擇ASTRO Camp的原因</title>
-      <link>/posts/02-school/</link>
+      <link>/posts/astro-capm/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/02-school/</guid>
+      <guid>/posts/astro-capm/</guid>
       <description>&lt;h2 id=&#34;轉職需要的不只是勇氣&#34;&gt;轉職需要的不只是勇氣&lt;/h2&gt;</description>
     </item>
   </channel>

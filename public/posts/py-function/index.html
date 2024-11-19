@@ -6,45 +6,44 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript-閉包Closuer | Joanna&#39;s Blog</title>
+    <title>Python-Function | Joanna&#39;s Blog</title>
 
     
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
 
-<link rel="canonical" href="/posts/03-js-closure/" />
+<link rel="canonical" href="/posts/py-function/" />
 
 
 
 <meta name="author" content="Joanna Lei" />
-<meta name="description" content="關於 Closure 閉包與自由變數
-" />
+<meta name="description" content="在 Python 裡的函數" />
 
 
-<meta name="keywords" content="JavaScript">
+<meta name="keywords" content="Python">
 
 
 
 <meta name="generator" content="Hugo 0.138.0">
 
 
-<meta property="og:url" content="/posts/03-js-closure/">
+<meta property="og:url" content="/posts/py-function/">
   <meta property="og:site_name" content="Joanna&#39;s Blog">
-  <meta property="og:title" content="JavaScript-閉包Closuer">
-  <meta property="og:description" content="關於 Closure 閉包與自由變數">
+  <meta property="og:title" content="Python-Function">
+  <meta property="og:description" content="在 Python 裡的函數">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-11-18T00:00:00+00:00">
     <meta property="article:modified_time" content="2024-11-18T00:00:00+00:00">
-    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Python">
 
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScript-閉包Closuer">
-  <meta name="twitter:description" content="關於 Closure 閉包與自由變數">
+  <meta name="twitter:title" content="Python-Function">
+  <meta name="twitter:description" content="在 Python 裡的函數">
 
 
 
@@ -246,7 +245,16 @@
   
     
     <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#在-python-裡的函數">在 Python 裡的函數</a>
+      <ul>
+        <li><a href="#函數定義">函數定義</a></li>
+        <li><a href="#函數格式">函數格式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
       <div class="dream-adsense px-5">
       
@@ -255,15 +263,15 @@
     
     <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
       
-  <meta itemprop="name" content="JavaScript-閉包Closuer">
-  <meta itemprop="description" content="關於 Closure 閉包與自由變數">
+  <meta itemprop="name" content="Python-Function">
+  <meta itemprop="description" content="在 Python 裡的函數">
   <meta itemprop="datePublished" content="2024-11-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-11-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="16">
-  <meta itemprop="keywords" content="JavaScript">
+  <meta itemprop="wordCount" content="194">
+  <meta itemprop="keywords" content="Python">
 
       <header>
-        <h1 itemprop="headline">JavaScript-閉包Closuer</h1>
+        <h1 itemprop="headline">Python-Function</h1>
         <p class="text-sm">
           
             Monday, Nov 18, 2024
@@ -304,19 +312,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=JavaScript-%e9%96%89%e5%8c%85Closuer&amp;url=/posts/03-js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=Python-Function&amp;url=/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=/posts/03-js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=JavaScript-%e9%96%89%e5%8c%85Closuer%20/posts/03-js-closure/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=Python-Function%20/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -330,21 +338,27 @@
       </header>
 
       
-      <img src="/img/.jpg" alt="JavaScript-閉包Closuer" />
+      <img src="/img/py-Function.png" alt="Python-Function" />
       
 
-      <p>關於 Closure 閉包與自由變數</p>
-<p>The remaining content of your post.</p>
+      <h2 id="在-python-裡的函數">在 Python 裡的函數</h2>
+<h3 id="函數定義">函數定義</h3>
+<h3 id="函數格式">函數格式</h3>
+<p>從 JavaScript 來到 Python，在之前一直被老師唸的縮排，現在老師終於不用再唸了～因為換 python 跟你說ダメ！來看一下 Python 接受的格式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;Hi Python&#34;</span>)
+</span></span></code></pre></div><p>有縮排在代表這是在這個 function 裡做的事情。沒有縮排就會壞掉呦，我們老師非常喜歡這個設定。<br>
+另外在 function 裡面必須塞東西，如果沒有放東西也會壞掉，<del>就是這麼任性</del>但很貼心的是放什麼都可以，如果暫時不知道要放什麼，可以使用<code>pass</code>告訴它讓我先跳過，之後再回來寫。</p>
 
       
       <div class="divider"></div>
       <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
         
-        <a class="group btn btn-outline" href="/posts/js-variable/" title="JavaScript-Variable">
+        <a class="group btn btn-outline" href="/posts/js-closure/" title="JavaScript-閉包Closuer">
           <ion-icon name="chevron-back"></ion-icon>
           <div class="inline-flex flex-col items-start">
             <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
-            <span class="max-w-48 truncate">JavaScript-Variable</span>
+            <span class="max-w-48 truncate">JavaScript-閉包Closuer</span>
           </div>
         </a>
         
