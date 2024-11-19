@@ -2,46 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Joanna&#39;s Blog</title>
-    <link>https://joannalei21.github.io/tags/python/</link>
+    <link>/tags/python/</link>
     <description>Recent content in Python on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://joannalei21.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python-裝飾器Decorator</title>
-      <link>https://joannalei21.github.io/posts/js-decorator/</link>
+      <link>/posts/py-decorator/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/js-decorator/</guid>
+      <guid>/posts/py-decorator/</guid>
       <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Python-裝飾器Decorator</title>
-      <link>https://joannalei21.github.io/posts/new/</link>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/new/</guid>
-      <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>面試題合集</title>
-      <link>https://joannalei21.github.io/posts/interview-q/</link>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/interview-q/</guid>
-      <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
     </item>
     <item>
       <title>Start!</title>
-      <link>https://joannalei21.github.io/posts/01-article-title/</link>
+      <link>/posts/01-article-title/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/01-article-title/</guid>
+      <guid>/posts/01-article-title/</guid>
       <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
     </item>
     <item>
       <title>選擇ASTRO Camp的原因</title>
-      <link>https://joannalei21.github.io/posts/02-school/</link>
+      <link>/posts/02-school/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/02-school/</guid>
-      <description>&lt;p&gt;轉職需要的不只是勇氣&lt;/p&gt;</description>
+      <guid>/posts/02-school/</guid>
+      <description>&lt;h2 id=&#34;轉職需要的不只是勇氣&#34;&gt;轉職需要的不只是勇氣&lt;/h2&gt;</description>
     </item>
   </channel>
 </rss>

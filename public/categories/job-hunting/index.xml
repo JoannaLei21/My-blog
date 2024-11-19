@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Job Hunting on Joanna&#39;s Blog</title>
-    <link>https://joannalei21.github.io/categories/job-hunting/</link>
+    <link>/categories/job-hunting/</link>
     <description>Recent content in Job Hunting on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://joannalei21.github.io/categories/job-hunting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/job-hunting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTML-文件設定</title>
+      <link>/posts/html-setting/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/html-setting/</guid>
+      <description>&lt;p&gt;解析 HTML 開頭的那些咒語們&lt;/p&gt;</description>
+    </item>
     <item>
       <title>面試題合集</title>
-      <link>https://joannalei21.github.io/posts/interview-q/</link>
+      <link>/posts/interview-q/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/interview-q/</guid>
+      <guid>/posts/interview-q/</guid>
       <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
     </item>
   </channel>

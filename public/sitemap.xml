@@ -2,58 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://joannalei21.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/css/</loc>
+    <loc>/tags/html/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/html/</loc>
+    <loc>/posts/html-setting/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/interview-qs/</loc>
+    <loc>/tags/interview/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/javascript/</loc>
+    <loc>/tags/javascript/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/js-variable/</loc>
+    <loc>/posts/js-variable/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/03-js-closure/</loc>
+    <loc>/posts/03-js-closure/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/categories/job-hunting/</loc>
+    <loc>/tags/job/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/categories/learning-code/</loc>
+    <loc>/categories/job-hunting/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/</loc>
+    <loc>/categories/learning-code/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/python/</loc>
+    <loc>/posts/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/js-decorator/</loc>
+    <loc>/tags/python/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/new/</loc>
+    <loc>/posts/py-decorator/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/interview-q/</loc>
+    <loc>/posts/interview-q/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/01-article-title/</loc>
+    <loc>/tags/css/</loc>
     <lastmod>2024-11-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joannalei21.github.io/posts/02-school/</loc>
+    <loc>/posts/01-article-title/</loc>
+    <lastmod>2024-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/02-school/</loc>
     <lastmod>2024-11-17T00:00:00+00:00</lastmod>
   </url>
 </urlset>

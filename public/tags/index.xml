@@ -2,45 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Joanna&#39;s Blog</title>
-    <link>https://joannalei21.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://joannalei21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CSS</title>
-      <link>https://joannalei21.github.io/tags/css/</link>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/tags/css/</guid>
-      <description></description>
-    </item>
+    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTML</title>
-      <link>https://joannalei21.github.io/tags/html/</link>
+      <link>/tags/html/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/tags/html/</guid>
+      <guid>/tags/html/</guid>
       <description></description>
     </item>
     <item>
-      <title>Interview Q&#39;s</title>
-      <link>https://joannalei21.github.io/tags/interview-qs/</link>
+      <title>Interview</title>
+      <link>/tags/interview/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/tags/interview-qs/</guid>
+      <guid>/tags/interview/</guid>
       <description></description>
     </item>
     <item>
       <title>JavaScript</title>
-      <link>https://joannalei21.github.io/tags/javascript/</link>
+      <link>/tags/javascript/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/tags/javascript/</guid>
+      <guid>/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Job</title>
+      <link>/tags/job/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/tags/job/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://joannalei21.github.io/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/tags/python/</guid>
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CSS</title>
+      <link>/tags/css/</link>
+      <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/tags/css/</guid>
       <description></description>
     </item>
   </channel>

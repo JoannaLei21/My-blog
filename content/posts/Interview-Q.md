@@ -4,18 +4,14 @@ date: "2024-11-18"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/.jpg
+cover: /img/Job-Q.png
 # images:
 #   - /img/cover.jpg
 categories:
-  - Learning Code
   - Job Hunting
 tags:
-  - HTML
-  - CSS
-  - JavaScript
-  - Python
-  - Interview Q's
+  - Interview
+  - Job
 # nolastmod: true
 draft: false
 ---
@@ -24,7 +20,7 @@ draft: false
 
 <!--more-->
 
-JS:
+### JS:
 
 - set time out
 - OOP 物件導向
@@ -36,7 +32,7 @@ JS:
 - 自由變數 free variable
 - this
 
-Python:
+### Python:
 
 - 虛擬環境
 - MRO
@@ -44,6 +40,6 @@ Python:
 - 裝飾器
 - 魔術方法
 
-HTML:
+### HTML:
 
-- 開頭設定代表？
+- 開頭設定代表

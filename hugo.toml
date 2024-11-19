@@ -1,4 +1,5 @@
-baseURL = "https://joannalei21.github.io/"
+baseURL = ""
+# "https://joannalei21.github.io/"
 languageCode = 'en'
 title = "Joanna's Blog"
 theme = "dream"

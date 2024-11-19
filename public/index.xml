@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Joanna&#39;s Blog</title>
-    <link>https://joannalei21.github.io/</link>
+    <link>/</link>
     <description>Recent content on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://joannalei21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTML-文件設定</title>
+      <link>/posts/html-setting/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/html-setting/</guid>
+      <description>&lt;p&gt;解析 HTML 開頭的那些咒語們&lt;/p&gt;</description>
+    </item>
     <item>
       <title>JavaScript-Variable</title>
-      <link>https://joannalei21.github.io/posts/js-variable/</link>
+      <link>/posts/js-variable/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/js-variable/</guid>
+      <guid>/posts/js-variable/</guid>
       <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
     </item>
     <item>
       <title>JavaScript-閉包Closuer</title>
-      <link>https://joannalei21.github.io/posts/03-js-closure/</link>
+      <link>/posts/03-js-closure/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/03-js-closure/</guid>
+      <guid>/posts/03-js-closure/</guid>
       <description>&lt;p&gt;關於 Closure 閉包與自由變數&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python-裝飾器Decorator</title>
-      <link>https://joannalei21.github.io/posts/js-decorator/</link>
+      <link>/posts/py-decorator/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/js-decorator/</guid>
-      <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Python-裝飾器Decorator</title>
-      <link>https://joannalei21.github.io/posts/new/</link>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/new/</guid>
+      <guid>/posts/py-decorator/</guid>
       <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
     </item>
     <item>
       <title>面試題合集</title>
-      <link>https://joannalei21.github.io/posts/interview-q/</link>
+      <link>/posts/interview-q/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/interview-q/</guid>
+      <guid>/posts/interview-q/</guid>
       <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
     </item>
     <item>
       <title>Start!</title>
-      <link>https://joannalei21.github.io/posts/01-article-title/</link>
+      <link>/posts/01-article-title/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/01-article-title/</guid>
+      <guid>/posts/01-article-title/</guid>
       <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
     </item>
     <item>
       <title>選擇ASTRO Camp的原因</title>
-      <link>https://joannalei21.github.io/posts/02-school/</link>
+      <link>/posts/02-school/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://joannalei21.github.io/posts/02-school/</guid>
-      <description>&lt;p&gt;轉職需要的不只是勇氣&lt;/p&gt;</description>
+      <guid>/posts/02-school/</guid>
+      <description>&lt;h2 id=&#34;轉職需要的不只是勇氣&#34;&gt;轉職需要的不只是勇氣&lt;/h2&gt;</description>
     </item>
   </channel>
 </rss>

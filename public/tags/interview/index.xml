@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Interview on Joanna&#39;s Blog</title>
+    <link>/tags/interview/</link>
+    <description>Recent content in Interview on Joanna&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/interview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTML-文件設定</title>
+      <link>/posts/html-setting/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/html-setting/</guid>
+      <description>&lt;p&gt;解析 HTML 開頭的那些咒語們&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>面試題合集</title>
+      <link>/posts/interview-q/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/interview-q/</guid>
+      <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
