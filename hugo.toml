@@ -25,7 +25,8 @@ avatar = "cat.png"
 headerTitle = "Joanna's Bolg"
 # motto = ""
 
-# footerBottomText = ""
+
+footerBottomText = "🌟 A Hugo theme named Dream"
 
 # rss = true
 

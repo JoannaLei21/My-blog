@@ -3,7 +3,7 @@
   x-data
   :class="$store.darkMode.class()"
   :data-theme="$store.darkMode.theme()">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python-Function | Joanna&#39;s Blog</title>
@@ -12,7 +12,7 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
 
-<link rel="canonical" href="/posts/py-function/" />
+<link rel="canonical" href="//localhost:1313/posts/py-function/" />
 
 
 
@@ -27,15 +27,15 @@
 <meta name="generator" content="Hugo 0.138.0">
 
 
-<meta property="og:url" content="/posts/py-function/">
+<meta property="og:url" content="//localhost:1313/posts/py-function/">
   <meta property="og:site_name" content="Joanna&#39;s Blog">
   <meta property="og:title" content="Python-Function">
   <meta property="og:description" content="在 Python 裡的函數">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-11-18T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-19T00:00:00+00:00">
     <meta property="article:tag" content="Python">
 
 
@@ -48,9 +48,7 @@
 
 
 
-  
-
-<link rel="stylesheet" href="/css/output.min.css" />
+<link rel="stylesheet" href="/css/output.css" />
 
 
 
@@ -100,7 +98,7 @@
       
       <div>
         
-        <a href="/" class="text-lg font-semibold cursor-pointer">
+        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
           Joanna&#39;s Bolg
         </a>
         
@@ -251,6 +249,23 @@
       <ul>
         <li><a href="#函數定義">函數定義</a></li>
         <li><a href="#函數格式">函數格式</a></li>
+        <li><a href="#參數-parameter">參數 parameter</a></li>
+      </ul>
+    </li>
+    <li><a href="#關鍵引數--位置引數">關鍵引數 &amp; 位置引數</a>
+      <ul>
+        <li><a href="#位置引數-positional-argument">位置引數 Positional argument</a></li>
+        <li><a href="#關鍵引數-keyword-argument">關鍵引數 Keyword argument</a></li>
+        <li><a href="#混合使用">混合使用</a></li>
+        <li><a href="#預設值的坑">預設值的坑</a></li>
+        <li><a href="#解決不確定引數的情況"><code>*</code>解決不確定引數的情況</a></li>
+      </ul>
+    </li>
+    <li><a href="#用開箱-unpacking">用*開箱 unpacking</a></li>
+    <li><a href="#docstring">Docstring</a></li>
+    <li><a href="#回傳值">回傳值</a>
+      <ul>
+        <li><a href="#early-return">Early return</a></li>
       </ul>
     </li>
   </ul>
@@ -265,24 +280,24 @@
       
   <meta itemprop="name" content="Python-Function">
   <meta itemprop="description" content="在 Python 裡的函數">
-  <meta itemprop="datePublished" content="2024-11-18T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-11-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="194">
+  <meta itemprop="datePublished" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1262">
   <meta itemprop="keywords" content="Python">
 
       <header>
         <h1 itemprop="headline">Python-Function</h1>
         <p class="text-sm">
           
-            Monday, Nov 18, 2024
+            Tuesday, Nov 19, 2024
           
 
-          | <span>1 minute read</span>
+          | <span>3 minute read</span>
 
           
           | <span>Updated at
             
-              Monday, Nov 18, 2024
+              Tuesday, Nov 19, 2024
             </span>
           
         </p>
@@ -312,19 +327,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=Python-Function&amp;url=/posts/py-function/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=Python-Function&amp;url=//localhost:1313/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=/posts/py-function/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=Python-Function%20/posts/py-function/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=Python-Function%20//localhost:1313/posts/py-function/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -349,25 +364,105 @@
 </span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;Hi Python&#34;</span>)
 </span></span></code></pre></div><p>有縮排在代表這是在這個 function 裡做的事情。沒有縮排就會壞掉呦，我們老師非常喜歡這個設定。<br>
 另外在 function 裡面必須塞東西，如果沒有放東西也會壞掉，<del>就是這麼任性</del>但很貼心的是放什麼都可以，如果暫時不知道要放什麼，可以使用<code>pass</code>告訴它讓我先跳過，之後再回來寫。</p>
+<h3 id="參數-parameter">參數 parameter</h3>
+<p>可以根據需要的去帶入參數，帶入幾個參數就會需要幾個引數 Argument，在 JavaScript 時可以不需要一個蘿蔔一個坑，但在 Python ダメ！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>(NameA,NameB):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello&#34;</span>{NameA},{NameB})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#e6db74">&#34;Jojo&#34;</span>,<span style="color:#e6db74">&#34;Anna&#34;</span>)
+</span></span></code></pre></div><p>當然也可以不設定參數，只是要記得，帶入時有幾個引數，在 function 就要有幾個參數。<br>
+另外參數的命名，會以能立馬知道這時要做什麼的去命名，才不會看到函數時黑人問號。</p>
+<h2 id="關鍵引數--位置引數">關鍵引數 &amp; 位置引數</h2>
+<p>在 Python 裡，對於引數的輸入格式，有一個貼心的小設定</p>
+<h3 id="位置引數-positional-argument">位置引數 Positional argument</h3>
+<p>在輸入引數的時候，通常我們會根據位置來對應</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>(NameA,NameB):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello</span><span style="color:#e6db74">{</span>NameA<span style="color:#e6db74">}</span><span style="color:#e6db74">,</span><span style="color:#e6db74">{</span>NameB<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#e6db74">&#34;Jojo&#34;</span>,<span style="color:#e6db74">&#34;Anna&#34;</span>)
+</span></span></code></pre></div><p>這邊<code>Jojo</code>會對應到<code>NameA</code>，而<code>Anna</code>會對應到<code>NameB</code>。
+位置引數得順序，必須依照參數的順序，不然在函數的計算過程中會得到不一樣的結果。</p>
+<h3 id="關鍵引數-keyword-argument">關鍵引數 Keyword argument</h3>
+<p>但有些時候，為了避免使用者輸入錯誤的引數，我們可以要求在輸入引數的時候帶入參數名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BMI</span>(weight, height)
+</span></span><span style="display:flex;"><span>    print(height, weight)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BMI (weight<span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span> , height <span style="color:#f92672">=</span> <span style="color:#ae81ff">165</span> )
+</span></span><span style="display:flex;"><span>BMI (height <span style="color:#f92672">=</span> <span style="color:#ae81ff">165</span>, weight<span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span> )
+</span></span></code></pre></div><p>關鍵字引數的位置可以自由排序，因為已經指定參數了，順序就沒有關係了。</p>
+<h3 id="混合使用">混合使用</h3>
+<p>位置引數和關鍵字引數可以一起使用，但有下面的規則：<br>
+1.位置引數必須在關鍵字引數前面。<br>
+2.<code>/</code>代表在此之前必須是位置引數，<code>*</code>代表在此之後必須是關鍵引數。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PY" data-lang="PY"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">printSomething</span>(a,b,<span style="color:#f92672">/</span>,c,<span style="color:#f92672">*</span>,d,e):
+</span></span><span style="display:flex;"><span>  print(a,b,c,d,e)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>printSomething(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,e<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,d<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span>printSomething(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,c<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,e<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,d<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span>)
+</span></span></code></pre></div><p>在這邊<code>/</code>和<code>*</code>都不是參數，而是指定格式。<br>
+中間沒有指定的<code>c</code>沒有限定，所以用哪個都可以。
+除了我們在設定函數時看指定之外，在官方文件的資料中，去查詢函數時，也會使用<code>/``*</code>來表示這個函數的用法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>sorted(iterable,<span style="color:#f92672">/</span>,<span style="color:#f92672">*</span>,key<span style="color:#f92672">=</span>none,reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p>上面是<code>sorted()</code>的設定在<code>/</code>之前要填入可迭代的引數，<code>*</code>後面參數已經給值，代表這是預設值，不需再另外帶入引數，然而要更改預設值的話，就必須使用關鍵字引數做更改。</p>
+<h3 id="預設值的坑">預設值的坑</h3>
+<p>預設值的目的是：普世價值，大家常用，宣告之後就可以不用一直重複做同一件事。
+要特別注意，如果預設值設定為可變動的值（如空[]、random()），會因為 python 的<strong>預設值在被定宜的時後，就會被決定了</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>(a,nums<span style="color:#f92672">=</span>[]):
+</span></span><span style="display:flex;"><span>    nums<span style="color:#f92672">.</span>append(a)
+</span></span><span style="display:flex;"><span>    print(nums)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">1</span>) <span style="color:#75715e">#[1]</span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">2</span>, [<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>]) <span style="color:#75715e">#[a,b,2]</span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">3</span>) <span style="color:#75715e">#[1,3]</span>
+</span></span></code></pre></div><p>這邊<code>hi(3)</code> 並沒有再帶入關鍵字引數，因而會顯示預設值，而在執行<code>h1(1)</code>時，預設值就被定義了，所以在之後呼叫的<code>hi()</code>只要沒帶關鍵字引數，都會有<code>[1]</code>這個預設值。<br>
+要避開這個坑，我們可以先將預設值設為<code>None</code>，然後在函數裡面加入判斷式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hey</span>(a, nums<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> nums <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        nums <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    nums<span style="color:#f92672">.</span>append(a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">1</span>) <span style="color:#75715e">#[1]</span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">2</span>, [<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>]) <span style="color:#75715e">#[a,b,2]</span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">3</span>) <span style="color:#75715e">#[3]</span>
+</span></span></code></pre></div><h3 id="解決不確定引數的情況"><code>*</code>解決不確定引數的情況</h3>
+<p>如果要帶入的參數是不確定數量的資料時該怎麼辦？<br>
+這個時候可以使用<del>超級瑪利歐裡的無敵星星</del><code>*</code>來幫助我們</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">printNum</span>(<span style="color:#f92672">*</span>Num):
+</span></span><span style="display:flex;"><span>  print(Num)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>printNum(<span style="color:#ae81ff">1</span>) <span style="color:#75715e">#(1,)</span>
+</span></span><span style="display:flex;"><span>printNum(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,) <span style="color:#75715e">#(1,2,3)</span>
+</span></span><span style="display:flex;"><span>printNum(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>) <span style="color:#75715e">#(1,2,3,4,5)</span>
+</span></span></code></pre></div><p><code>*</code>會吃下所有的<strong>位置引數</strong>，並把他們打包成 Tuple。</p>
+<p><code>*</code>只能吃位置引數，那關鍵字引數怎麼辦？<br>
+<code>**</code>就讓兩個＊來搞定！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>   print(a,b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,a<span style="color:#f92672">=</span><span style="color:#ae81ff">9</span>,b<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>hi(<span style="color:#ae81ff">4</span>,x<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,y<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>) <span style="color:#75715e">#</span>
+</span></span></code></pre></div><h2 id="用開箱-unpacking">用*開箱 unpacking</h2>
+<p>待補充</p>
+<h2 id="docstring">Docstring</h2>
+<p>待補充</p>
+<h2 id="回傳值">回傳值</h2>
+<p>跟 JavaScript 一樣： 1.若是沒有<code>return</code>則函數沒有結果。<br>
+2.只要遇到<code>return</code> 函數就結束了</p>
+<h3 id="early-return">Early return</h3>
 
       
       <div class="divider"></div>
       <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
         
-        <a class="group btn btn-outline" href="/posts/js-closure/" title="JavaScript-閉包Closuer">
-          <ion-icon name="chevron-back"></ion-icon>
-          <div class="inline-flex flex-col items-start">
-            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
-            <span class="max-w-48 truncate">JavaScript-閉包Closuer</span>
-          </div>
-        </a>
+        <div></div>
         
 
         
-        <a class="group btn btn-outline" href="/posts/py-decorator/" title="Python-裝飾器Decorator">
+        <a class="group btn btn-outline" href="/posts/py--legb/" title="Python-LEGB">
           <div class="inline-flex flex-col items-end">
             <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
-            <span class="max-w-48 truncate">Python-裝飾器Decorator</span>
+            <span class="max-w-48 truncate">Python-LEGB</span>
           </div>
           <ion-icon name="chevron-forward"></ion-icon>
         </a>
@@ -392,13 +487,7 @@
   
 
   
-  <p class="text-sm">
-    🌱
-    <span class="text-base-content/60">
-      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
-      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
-    >
-  </p>
+  <p>🌟 A Hugo theme named Dream</p>
   
 </div>
 
@@ -475,13 +564,7 @@
   
 
   
-  <p class="text-sm">
-    🌱
-    <span class="text-base-content/60">
-      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
-      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
-    >
-  </p>
+  <p>🌟 A Hugo theme named Dream</p>
   
 </div>
 
@@ -530,16 +613,12 @@
 
   
   
-    
-  
-  <script src="/js/grid.min.js"></script>
+  <script src="/js/grid.js"></script>
 
 
 
 
-  
-
-<script src="/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
     
 

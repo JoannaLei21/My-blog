@@ -1,5 +1,5 @@
 ---
-title: "JavaScript-閉包Closuer"
+title: "JavaScript-Closuer"
 date: "2024-11-18"
 author: Joanna Lei
 # avatar: /img/author.jpg

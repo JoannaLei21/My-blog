@@ -4,7 +4,7 @@ date: "2024-11-18"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/.jpg
+cover: /img/Decorator.png
 # images:
 #   - /img/cover.jpg
 categories:
