@@ -9,6 +9,7 @@ cover: /img/ASTRO.png
 #   - /img/cover.jpg
 categories:
   - Learning Code
+  - My Coding Life
 tags:
   - HTML
   - CSS

@@ -18,6 +18,7 @@ tags:
   - Python
   - Interview
   - Job
+  - Basic knowledge
 # nolastmod: true
 draft: true
 ---

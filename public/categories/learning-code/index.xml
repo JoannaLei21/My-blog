@@ -6,14 +6,28 @@
     <description>Recent content in Learning Code on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/learning-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic knowledge- Noun</title>
+      <link>/posts/bk-noun/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/bk-noun/</guid>
+      <description>&lt;h2 id=&#34;基本名詞-持續更新&#34;&gt;基本名詞-持續更新&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title>Basic knowledge- Terminal</title>
+      <link>/posts/bk-terminal/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/bk-terminal/</guid>
+      <description>&lt;h2 id=&#34;終端機指令集合區-&#34;&gt;終端機指令集合區 🥷&lt;/h2&gt;</description>
+    </item>
     <item>
       <title>Python-Function</title>
       <link>/posts/py-function/</link>
       <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
       <guid>/posts/py-function/</guid>
-      <description>&lt;h2 id=&#34;在-python-裡的函數&#34;&gt;在 Python 裡的函數&lt;/h2&gt;</description>
+      <description>&lt;h2 id=&#34;在-python-裡的函數-待補充&#34;&gt;在 Python 裡的函數-待補充&lt;/h2&gt;</description>
     </item>
     <item>
       <title>Python-LEGB</title>
@@ -55,21 +69,21 @@
       <link>/posts/js-variable-hosting/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
       <guid>/posts/js-variable-hosting/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+      <description>&lt;p&gt;令人混亂的提升-待撰寫&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python-裝飾器Decorator</title>
       <link>/posts/py-decorator/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
       <guid>/posts/py-decorator/</guid>
-      <description>&lt;p&gt;Decorator&lt;/p&gt;</description>
+      <description>&lt;p&gt;Decorator-待撰寫&lt;/p&gt;</description>
     </item>
     <item>
       <title>Start!</title>
       <link>/posts/hugo-buildup-webpage/</link>
       <pubDate>Sun, 17 Nov 2024 00:00:00 +0000</pubDate>
       <guid>/posts/hugo-buildup-webpage/</guid>
-      <description>&lt;p&gt;開始建立我的 Hugo Web page&lt;/p&gt;</description>
+      <description>&lt;p&gt;開始建立我的 Hugo Web page-待補充&lt;/p&gt;</description>
     </item>
     <item>
       <title>選擇ASTRO Camp的原因</title>

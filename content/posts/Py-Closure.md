@@ -15,7 +15,7 @@ tags:
 draft: true
 ---
 
-## Python 裡的閉包 Closure
+## Python 裡的閉包 Closure-待補充
 
 <!--more-->
 

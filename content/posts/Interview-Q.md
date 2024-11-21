@@ -16,7 +16,7 @@ tags:
 draft: false
 ---
 
-關於上課提到的面試題目們
+關於上課提到的面試題目們-持續更新中
 
 <!--more-->
 
@@ -30,7 +30,6 @@ draft: false
 - promies
 - closure 閉包
 - 自由變數 free variable
-- this
 
 ### Python:
 
@@ -39,7 +38,10 @@ draft: false
 - 多重繼承
 - 裝飾器
 - 魔術方法
+- 面試題\__init_\_.py
+- MVC vs MTV
+- 何謂 RESTful API
 
 ### HTML:
 
-- 開頭設定代表
+- [開頭設定代表的意思](https://joannalei21.github.io/posts/html-setting/ "前往分頁")

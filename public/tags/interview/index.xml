@@ -16,11 +16,18 @@
       <description>&lt;p&gt;解析 HTML 開頭的那些咒語們&lt;/p&gt;</description>
     </item>
     <item>
+      <title>JavaScript-Variable</title>
+      <link>/posts/js-variable-hosting/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/js-variable-hosting/</guid>
+      <description>&lt;p&gt;令人混亂的提升-待撰寫&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>面試題合集</title>
       <link>/posts/interview-q/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
       <guid>/posts/interview-q/</guid>
-      <description>&lt;p&gt;關於上課提到的面試題目們&lt;/p&gt;</description>
+      <description>&lt;p&gt;關於上課提到的面試題目們-持續更新中&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

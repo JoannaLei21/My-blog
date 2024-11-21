@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic knowledge- Terminal | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="/posts/bk-terminal/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="終端機指令集合區 🥷" />
+
+
+<meta name="keywords" content="Basic Knowledge">
+
+
+
+<meta name="generator" content="Hugo 0.138.0">
+
+
+<meta property="og:url" content="/posts/bk-terminal/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Basic knowledge- Terminal">
+  <meta property="og:description" content="終端機指令集合區 🥷">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Basic Knowledge">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Basic knowledge- Terminal">
+  <meta name="twitter:description" content="終端機指令集合區 🥷">
+
+
+
+
+  
+
+<link rel="stylesheet" href="/css/output.min.css" />
+
+
+<style>
+
+#dream-global-bg {
+  background-image: url(/background.png);
+}
+
+
+
+</style>
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#終端機指令集合區-">終端機指令集合區 🥷</a>
+      <ul>
+        <li><a href="#終端機是什麼">終端機是什麼</a></li>
+      </ul>
+    </li>
+    <li><a href="#常用的指令們">常用的指令們</a>
+      <ul>
+        <li><a href="#基本">基本</a></li>
+        <li><a href="#python">python</a></li>
+        <li><a href="#pyenv">pyenv</a></li>
+        <li><a href="#venv">venv</a></li>
+        <li><a href="#poetry">poetry</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Basic knowledge- Terminal">
+  <meta itemprop="description" content="終端機指令集合區 🥷">
+  <meta itemprop="datePublished" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1202">
+  <meta itemprop="keywords" content="Basic Knowledge">
+
+      <header>
+        <h1 itemprop="headline">Basic knowledge- Terminal</h1>
+        <p class="text-sm">
+          
+            Thursday, Nov 21, 2024
+          
+
+          | <span>3 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Thursday, Nov 21, 2024
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Basic%20knowledge-%20Terminal&amp;url=/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Basic%20knowledge-%20Terminal%20/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/terminal.PNG" alt="Basic knowledge- Terminal" />
+      
+
+      <h2 id="終端機指令集合區-">終端機指令集合區 🥷</h2>
+<h3 id="終端機是什麼">終端機是什麼</h3>
+<p>在古老的時代~~喂！！～～電腦很貴，不像現在幾乎每個人都有電腦可以用。公司內部通常會有一台大型的電腦主機，其它人要使用這部電腦就是自己拿螢幕跟鍵盤去接，然後在上面做事情，這些末端的操作設備便統稱之「終端機」。<br>
+終端機本身通常不是一部電腦，它沒有運算能力，僅用來顯示資料及輸入資料所有的計算都是在主機上處理的。<br>
+<a href="https://gitbook.tw/chapters/command-line/command-line" title="前往">上面文句擷取自-為你自己學 Git</a></p>
+<p><img src="https://cdna.artstation.com/p/assets/images/images/034/244/186/large/sergiusz-w-4-f.jpg?1611779462" alt="以前的終端機"></p>
+<p>現在的終端機，在電腦上，是一個比網頁視窗小，黑黑的一片的視窗，它的 icon 者這樣
+<img src="https://help.apple.com/assets/65DFB7A79DFEC61A7A0517AC/65DFB7A793CD15C0410BA37D/zh_TW/d94aa1c4979b25e9ffbda97fcbae219a.png" alt="終端機"></p>
+<p>認真說，在沒學寫程式之前，對它有莫名的恐懼感，雖然它上面的符號感覺有點賣萌，但總覺好像輸入錯什麼電腦就會爆炸之類的 😶‍🌫️<br>
+接觸之後發現，就算輸入錯什麼，頂多它不會理你而已，只能說人對未知的東西，第一時間的感知就是恐懼啊！</p>
+<h2 id="常用的指令們">常用的指令們</h2>
+<p>好的又離題了，這篇只是想紀錄一下平常會用到的指令，因為還不太熟所以擠下來方便自己腦袋短路的時候可以來這邊抓資料，這邊皆以<code>ios</code>為主</p>
+<h3 id="基本">基本</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">cd</td>
+          <td style="text-align: left">切換目錄</td>
+          <td style="text-align: left">cd Desktop /到桌面</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pwd</td>
+          <td style="text-align: left">取得目前所在的位置</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">clear</td>
+          <td style="text-align: left">清除畫面上的內容</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ls</td>
+          <td style="text-align: left">列出目前的檔案列表</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">mkdir</td>
+          <td style="text-align: left">建立新的目錄</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">touch</td>
+          <td style="text-align: left">建立檔案</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cp</td>
+          <td style="text-align: left">複製檔案</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">mv</td>
+          <td style="text-align: left">移動檔案</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">rm</td>
+          <td style="text-align: left">刪除檔案</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">com + N</td>
+          <td style="text-align: left">新增視窗</td>
+          <td style="text-align: left">快捷鍵</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">opt + Comd + I</td>
+          <td style="text-align: left">編輯背景色</td>
+          <td style="text-align: left">快捷鍵</td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="https://support.apple.com/zh-tw/guide/terminal/trmlshtcts/mac" title="前往官網">mac 官方文件：終端機的快捷鍵</a></p>
+<h3 id="python">python</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">which python</td>
+          <td style="text-align: left">找到 python 在什麼地方</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">which python3</td>
+          <td style="text-align: left">找到 python3 在什麼地方</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">python3</td>
+          <td style="text-align: left">進入 REPL</td>
+          <td style="text-align: left">會顯示&raquo;&gt;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">exir()</td>
+          <td style="text-align: left">離開 REPL</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl + d</td>
+          <td style="text-align: left">離開 REPL</td>
+          <td style="text-align: left">快捷鍵</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="pyenv">pyenv</h3>
+<p>讓我們在同一台電腦安裝不同的 Python 版本，像是工具箱，管 Python。<br>
+安裝 pyenv 不是安裝 python，如果專案有需求可以再安裝（自己目前沒有裝）</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">pyenv -v</td>
+          <td style="text-align: left">查看版本</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pyenv versions</td>
+          <td style="text-align: left">查看有哪些版本</td>
+          <td style="text-align: left">若顯示*system 表示只有系統內建的版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pyenv install &ndash;list</td>
+          <td style="text-align: left">查看有哪些版本可以安裝</td>
+          <td style="text-align: left">只有數字的為 python</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pyenv install 3.12.4</td>
+          <td style="text-align: left">安裝 python 版本</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pyenv shell 3.12.4</td>
+          <td style="text-align: left">切換 python 版本</td>
+          <td style="text-align: left">切好會在 versons 顯示*3.12.4</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pyenv global 3.12.4</td>
+          <td style="text-align: left">預設 python 版本</td>
+          <td style="text-align: left">關掉終端機再開時會用的版本</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="venv">venv</h3>
+<p>虛擬環境，可在各自的環境（檔案）裡裝需要的套件。<br>
+管理套件。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">python -m venv .venv</td>
+          <td style="text-align: left">載入內建虛擬模組</td>
+          <td style="text-align: left">會自動新增一個資料夾</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">source .venv/bin/activate</td>
+          <td style="text-align: left">進入虛擬環境</td>
+          <td style="text-align: left">終端機名字前面會顯示(.venv)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip list</td>
+          <td style="text-align: left">查看有裝的套件</td>
+          <td style="text-align: left">會顯示 list 出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">deactivate</td>
+          <td style="text-align: left">退出虛擬環境</td>
+          <td style="text-align: left">會顯示 list 出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip install xxx</td>
+          <td style="text-align: left">安裝 xxx 套件</td>
+          <td style="text-align: left">依照套件給的名字安裝，會在 lib 資料夾裡面</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip freeze</td>
+          <td style="text-align: left">列出有安裝的套件＆版本</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip freeze &gt; requirements.text</td>
+          <td style="text-align: left">輸出 list</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip install -r requirements.text</td>
+          <td style="text-align: left">安裝 .text 裡面的套件</td>
+          <td style="text-align: left">-r 讀取，網站部署時會用到</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="poetry">poetry</h3>
+<p>虛擬環境，可在各自的環境（檔案）裡裝需要的套件。<br>
+管理套件。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">pipx install poetry</td>
+          <td style="text-align: left">安裝</td>
+          <td style="text-align: left">官方文件指令</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry new file-name</td>
+          <td style="text-align: left">用 poetry 開新專案</td>
+          <td style="text-align: left">會自動長很多東西出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry init</td>
+          <td style="text-align: left">手動開檔案後，cd 至檔案執行設定</td>
+          <td style="text-align: left">會有設定，可全部 enter</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry init -n</td>
+          <td style="text-align: left">手動開檔案後，cd 至檔案執行設定</td>
+          <td style="text-align: left">全部預設</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry shell</td>
+          <td style="text-align: left">進入虛擬環境</td>
+          <td style="text-align: left">終端機名字前面會顯示(fileName-pyVersion)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry add requests</td>
+          <td style="text-align: left">安裝套件 requests</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry remove requests</td>
+          <td style="text-align: left">移除套件 requests</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pip list</td>
+          <td style="text-align: left">查看有裝的套件</td>
+          <td style="text-align: left">會顯示 list 出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry show</td>
+          <td style="text-align: left">查看有裝的套件</td>
+          <td style="text-align: left">會顯示 list 出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry show &ndash;tree</td>
+          <td style="text-align: left">查看套件樹狀結構</td>
+          <td style="text-align: left">會顯示 list 出來</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry env info</td>
+          <td style="text-align: left">查看套件裝到哪</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry config &ndash;list</td>
+          <td style="text-align: left">查看 poetry 設定檔</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">poetry config virtualenvs.in-project true</td>
+          <td style="text-align: left">更改預設</td>
+          <td style="text-align: left">安裝的套件會顯示出來</td>
+      </tr>
+  </tbody>
+</table>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a class="group btn btn-outline" href="/posts/bk-noun/" title="Basic knowledge- Noun">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Basic knowledge- Noun</span>
+          </div>
+        </a>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/py-function/" title="Python-Function">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">Python-Function</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+    
+  
+  <script src="/js/grid.min.js"></script>
+
+
+
+
+  
+
+<script src="/js/main.min.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

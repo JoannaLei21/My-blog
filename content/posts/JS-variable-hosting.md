@@ -9,13 +9,15 @@ cover: /img/JS-variableHosting.png
 #   - /img/cover.jpg
 categories:
   - Learning Code
+  - Job Hunting
 tags:
   - JavaScript
+  - Interview
 # nolastmod: true
 draft: false
 ---
 
-Cut out summary from your post content here.
+令人混亂的提升-待撰寫
 
 <!--more-->
 
