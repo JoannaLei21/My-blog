@@ -297,6 +297,7 @@ class Resume (models.Model):
 |:----|:-----|:----|
 |.CharField()|文字輸入框|(max_length=50)|
 |.TextField()|文字輸入區|(null=True)|
+
 每個執行方法會有不同的預設，跑不動時可以看是不是需要的參數沒有放  
 如果要設定必填(null=False)，讓使用者填有必要的就好。
 

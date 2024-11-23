@@ -16,7 +16,7 @@ hasCJKLanguage = true
 lightTheme = "emerald"
 darkTheme = "forest"
 
-backgroundImage = "/background.png"
+# backgroundImage = "/background.png"
 # backgroundImageDark = ""
 
 author = "Joanna Lei"
