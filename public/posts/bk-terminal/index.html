@@ -3,7 +3,7 @@
   x-data
   :class="$store.darkMode.class()"
   :data-theme="$store.darkMode.theme()">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic knowledge- Terminal | Joanna&#39;s Blog</title>
@@ -12,7 +12,7 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
 
-<link rel="canonical" href="/posts/bk-terminal/" />
+<link rel="canonical" href="//localhost:1313/posts/bk-terminal/" />
 
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.138.0">
 
 
-<meta property="og:url" content="/posts/bk-terminal/">
+<meta property="og:url" content="//localhost:1313/posts/bk-terminal/">
   <meta property="og:site_name" content="Joanna&#39;s Blog">
   <meta property="og:title" content="Basic knowledge- Terminal">
   <meta property="og:description" content="終端機指令集合區 🥷">
@@ -48,9 +48,7 @@
 
 
 
-  
-
-<link rel="stylesheet" href="/css/output.min.css" />
+<link rel="stylesheet" href="/css/output.css" />
 
 
 <style>
@@ -110,7 +108,7 @@
       
       <div>
         
-        <a href="/" class="text-lg font-semibold cursor-pointer">
+        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
           Joanna&#39;s Bolg
         </a>
         
@@ -269,6 +267,7 @@
         <li><a href="#pyenv">pyenv</a></li>
         <li><a href="#venv">venv</a></li>
         <li><a href="#poetry">poetry</a></li>
+        <li><a href="#djanjo">Djanjo</a></li>
       </ul>
     </li>
   </ul>
@@ -285,7 +284,7 @@
   <meta itemprop="description" content="終端機指令集合區 🥷">
   <meta itemprop="datePublished" content="2024-11-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-11-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1202">
+  <meta itemprop="wordCount" content="1288">
   <meta itemprop="keywords" content="Basic Knowledge">
 
       <header>
@@ -330,19 +329,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=Basic%20knowledge-%20Terminal&amp;url=/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=Basic%20knowledge-%20Terminal&amp;url=//localhost:1313/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=Basic%20knowledge-%20Terminal%20/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=Basic%20knowledge-%20Terminal%20//localhost:1313/posts/bk-terminal/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -653,6 +652,48 @@
       </tr>
   </tbody>
 </table>
+<h3 id="djanjo">Djanjo</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">說明</th>
+          <th style="text-align: left">範例/註記</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">python -m pip install Django==5.1.3</td>
+          <td style="text-align: left">安裝最新版本</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">python -m django &ndash;version</td>
+          <td style="text-align: left">查看版本</td>
+          <td style="text-align: left">-m 指載入模組</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">django -admain startproject mysite file-name .</td>
+          <td style="text-align: left">建立專案</td>
+          <td style="text-align: left">.指在這一層建立</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">python manage.py</td>
+          <td style="text-align: left">查看執行指令列表</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">python manage.py runserver</td>
+          <td style="text-align: left">執行</td>
+          <td style="text-align: left">會出現路徑 可開啟本地網頁</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">python manage.py shell</td>
+          <td style="text-align: left">進入 REPL</td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
 
       
       <div class="divider"></div>
@@ -668,10 +709,10 @@
         
 
         
-        <a class="group btn btn-outline" href="/posts/py-function/" title="Python-Function">
+        <a class="group btn btn-outline" href="/posts/py-django/" title="Python-Django">
           <div class="inline-flex flex-col items-end">
             <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
-            <span class="max-w-48 truncate">Python-Function</span>
+            <span class="max-w-48 truncate">Python-Django</span>
           </div>
           <ion-icon name="chevron-forward"></ion-icon>
         </a>
@@ -822,16 +863,12 @@
 
   
   
-    
-  
-  <script src="/js/grid.min.js"></script>
+  <script src="/js/grid.js"></script>
 
 
 
 
-  
-
-<script src="/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
     
 

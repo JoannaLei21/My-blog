@@ -113,3 +113,14 @@ draft: false
 | poetry env info | 查看套件裝到哪 | |
 | poetry config --list | 查看 poetry 設定檔 | |
 | poetry config virtualenvs.in-project true | 更改預設 | 安裝的套件會顯示出來 |
+
+### Djanjo
+
+| 指令                                           | 說明             | 範例/註記                 |
+| :--------------------------------------------- | :--------------- | :------------------------ |
+| python -m pip install Django==5.1.3            | 安裝最新版本     |                           |
+| python -m django --version                     | 查看版本         | -m 指載入模組             |
+| django -admain startproject mysite file-name . | 建立專案         | .指在這一層建立           |
+| python manage.py                               | 查看執行指令列表 |                           |
+| python manage.py runserver                     | 執行             | 會出現路徑 可開啟本地網頁 |
+| python manage.py shell                         | 進入 REPL        |                           |

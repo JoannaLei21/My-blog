@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-Django | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="//localhost:1313/posts/py-django/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="使用 Django 框架建立網站
+" />
+
+
+<meta name="keywords" content="Python">
+
+
+
+<meta name="generator" content="Hugo 0.138.0">
+
+
+<meta property="og:url" content="//localhost:1313/posts/py-django/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Python-Django">
+  <meta property="og:description" content="使用 Django 框架建立網站">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python-Django">
+  <meta name="twitter:description" content="使用 Django 框架建立網站">
+
+
+
+
+<link rel="stylesheet" href="/css/output.css" />
+
+
+<style>
+
+#dream-global-bg {
+  background-image: url(/background.png);
+}
+
+
+
+</style>
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#django">Django</a>
+      <ul>
+        <li><a href="#安裝">安裝</a></li>
+        <li><a href="#建立專案">建立專案</a></li>
+        <li><a href="#建立分頁">建立分頁</a></li>
+      </ul>
+    </li>
+    <li><a href="#mvc-vs-mtv">MVC vs MTV</a>
+      <ul>
+        <li><a href="#mvc">MVC</a></li>
+        <li><a href="#mtv">MTV</a></li>
+      </ul>
+    </li>
+    <li><a href="#建立-app">建立 app</a>
+      <ul>
+        <li><a href="#口訣mtvu">口訣：MTV+U</a></li>
+        <li><a href="#執行步驟-list">執行步驟 list</a></li>
+      </ul>
+    </li>
+    <li><a href="#路徑命名-rest">路徑命名 REST</a></li>
+    <li><a href="#建立-model">建立 Model</a>
+      <ul>
+        <li><a href="#model">Model</a></li>
+        <li><a href="#makemigration">makemigration</a></li>
+        <li><a href="#migrate">migrate</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#crud">CRUD</a>
+      <ul>
+        <li><a href="#creat-建立">Creat 建立</a></li>
+        <li><a href="#read-讀取">Read 讀取</a></li>
+        <li><a href="#update-更新">Update 更新</a></li>
+        <li><a href="#delete-刪除">Delete 刪除</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Python-Django">
+  <meta itemprop="description" content="使用 Django 框架建立網站">
+  <meta itemprop="datePublished" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="4294">
+  <meta itemprop="keywords" content="Python">
+
+      <header>
+        <h1 itemprop="headline">Python-Django</h1>
+        <p class="text-sm">
+          
+            Thursday, Nov 21, 2024
+          
+
+          | <span>9 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Thursday, Nov 21, 2024
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Python-Django&amp;url=//localhost:1313/posts/py-django/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/py-django/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Python-Django%20//localhost:1313/posts/py-django/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/django.png" alt="Python-Django" />
+      
+
+      <p>使用 Django 框架建立網站</p>
+<h2 id="django">Django</h2>
+<p>Django 是什麼呢？在<a href="https://www.djangoproject.com/" title="前往Django官網">Django 官網</a>的介紹：</p>
+
+
+
+  <blockquote>
+    <p>Django 是一個高階 Python Web 框架，鼓勵快速開發和簡潔、務實的設計。它由經驗豐富的開發人員構建，解決了 Web 開發的大部分麻煩，因此您可以專注於編寫應用程序，而無需重新發 ​​ 明輪子。它是免費且開源的。</p>
+
+  </blockquote>
+
+
+
+
+  <blockquote>
+    <p>Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
+
+  </blockquote>
+
+<p>簡單來說就是一個框架，相較 Flasks 能處理更大型的專案。</p>
+<h3 id="安裝">安裝</h3>
+<p>(上課 11-21 上午最後半小時)<br>
+*開啟虛擬環之後，輸入下面的指令便可以安裝 Django (macOS)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python <span style="color:#f92672">-</span>m pip install Django<span style="color:#f92672">==</span><span style="color:#ae81ff">5.1.3</span>
+</span></span></code></pre></div><h3 id="建立專案">建立專案</h3>
+<p>1.輸入下面的指令開啟專案：
+<strong>注意要在資料夾名稱後面加<code>.</code>才不會開在資料夾裡面</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>django<span style="color:#f92672">-</span>admin startproject mysite file<span style="color:#f92672">-</span>name <span style="color:#f92672">.</span>
+</span></span></code></pre></div><p>2.文件裡面會生出一個檔案<code>manage.py</code> 執行它</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py
+</span></span></code></pre></div><p>3.在終端機列出來的 list 可以看到一個 runserver，執行 runserver</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py runserver
+</span></span></code></pre></div><p>4.成功執行的話會出現一段文字，裡面會有路徑<code>Starting development server at http://127.0.0.1:8000/</code>，如果<code>8000</code>這個 port 開啟不了話，我們可以自己指定一個 port 給它，用下面的指令執行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py runserver <span style="color:#ae81ff">8888</span>
+</span></span></code></pre></div><p><code>8888</code>這個是自己設定的，也可以換別的數字。</p>
+<p>5.cmd+click 進入網頁，成功連接的話會看到下面的綠色火箭
+<img src="https://dvmn.org/filer/canonical/1591095182/631/" alt="成功頁面"></p>
+<p>6.這步驟可以跳過，在設定改預設語言為中文，在<code>setting.py</code>裡找這個</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>LANGUAGE_CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e">#預設</span>
+</span></span><span style="display:flex;"><span>LANGUAGE_CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;zh-Hant&#39;</span> <span style="color:#75715e">#繁中</span>
+</span></span></code></pre></div><h3 id="建立分頁">建立分頁</h3>
+<p>1.在<code>urls</code>裡的預設路徑</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;admin/&#39;</span>, admin<span style="color:#f92672">.</span>site<span style="color:#f92672">.</span>urls),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><code>'admin/'</code>代表網址列顯示的名字<code>http://127.0.0.1:8000/admin/</code><br>
+<code>admin.site.urls</code>表示這個頁面要<strong>執行</strong>什麼，為了方便管理，會拆出來放在另一個一資料夾</p>
+<p>(上課 1121 下午)</p>
+<p>2.設定自己的路徑</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;/index&#39;</span>, index),
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.http <span style="color:#f92672">import</span> HttpResponse
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#這個HttpResponse是傳送回應給瀏覽器看</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> HttpResoponse(<span style="color:#e6db74">&#34;index page&#34;</span>)
+</span></span></code></pre></div><p>3.把<code>def</code>拆出來放在另一個資料夾<code>views.py</code>方便日後做管理。<br>
+<code>usrl.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .views <span style="color:#f92672">import</span> index
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;admin/&#39;</span>, admin<span style="color:#f92672">.</span>site<span style="color:#f92672">.</span>urls),
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;/index&#39;</span>, index, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p><code>views.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.http <span style="color:#f92672">import</span> HttpResponse
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(resquest):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> HttpResponse(<span style="color:#e6db74">&#34;Start Writting Your Resume&#34;</span>)
+</span></span></code></pre></div><p>4.建立 Template
+在最外層新增一個<code>資料夾:Templates</code>，在<code>setting.py</code>裡把檔案掛到的<code>DIRS[]</code>這樣系統才會從這個資料夾裡面找檔案<br>
+<code>setting.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>DIRS[<span style="color:#e6db74">&#34;Templates&#34;</span>]
+</span></span></code></pre></div><p>在<code>views.py</code>設定<code>render</code>讓網頁渲染頁面<br>
+<code>views.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.http <span style="color:#f92672">import</span> HttpResponse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(resquest):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;home.html&#34;</span>)
+</span></span></code></pre></div><p><code>home.html</code>放在剛建立的<code>Templates</code>資料夾裡面</p>
+<p>5.html 設定：</p>
+<ul>
+<li>
+<p><code> &lt;header&gt;</code>重複志訓可以建立一個公版，之後使用 <code>{% extend &quot;資料夾路徑&quot; %}</code>匯入。</p>
+</li>
+<li>
+<p>挖洞：在公版用<code>{% block &quot;自己取名字&quot; %}{% endblock %}</code>挖洞，之後的檔案在同樣的指令中放置要顯示的內容<br>
+<code>公版</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{% block &#34;自己取名字&#34; %} {% endblock %}
+</span></span></code></pre></div><p><code>檔案</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{% block &#34;自己取名字&#34; %}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;XXXXX&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;nuo;bjkncdjfpenvjfl/e;nfvu oe&#39;n jf/vfe&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{% endblock %}
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="mvc-vs-mtv">MVC vs MTV</h2>
+<p>在軟體架構模式中，普遍使用 MVC 模式（Model–view–controller），它把軟體系統分為三個基本部分：模型（Model）、視圖（View）和控制器（Controller）。<br>
+在這邊是由控制器（Controller）來決定使用者看的畫面。</p>
+<h3 id="mvc">MVC</h3>
+<p><img src="https://www.infolight.com/news/Images/BOOK113/image001.png" alt="MVC中文圖">
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20240704102850/MVC-Architecture.webp" alt="MVC英文圖"></p>
+<h3 id="mtv">MTV</h3>
+<p>而在 Django 裡的為 MTV 模式 (Modle-Template-View)，是由 Template 決定使用者看的畫面
+<img src="https://www.mropengate.com/2015/08/mvcdjangomtv.html" alt="Django MTV">
+兩者差別在看法不一樣，所以設計角度不一樣。</p>
+<h2 id="建立-app">建立 app</h2>
+<p>一個專案裡面可以有很多個<code>app</code>應用程式（功能）</p>
+<h3 id="口訣mtvu">口訣：MTV+U</h3>
+<p>1.建立 app 指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py startapp app_file_name
+</span></span></code></pre></div><p>2.新增<code>urls.py</code>並建立 path</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .views <span style="color:#f92672">import</span> home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#34;&#34;</span>,home),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>這邊可以直接幫路徑取名字，方便之後再 html 連結時，可以快速的使用命名替代路徑作為連結的依據。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>app_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;app_file_name&#34;</span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#34;&#34;</span>,home, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span>),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">herf</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; {% url &#39;app_file_name:xxx&#39;%}&#34;</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><p>3.在<code>views.py</code>建立</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">home</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;app_file_name/home.html&#34;</span>)
+</span></span></code></pre></div><p>4.建立 template 資料夾，放 html 檔。<br>
+放在 app 的<code>template資料夾</code>目前還沒有連動，要在<code>setting.py</code>裡將檔案掛在 APP 下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>INSTALLED_APPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;app_file_name&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>5.建立網頁要渲染的 html 檔</p>
+<p>6.在專案資料夾的<code>urls.py</code>加入 path</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path,include
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>path(<span style="color:#e6db74">&#34;app_file_name/&#34;</span>, include(<span style="color:#e6db74">&#34;app_file_name.urls&#34;</span>))
+</span></span></code></pre></div><p>使用<code>inclide</code>代表連接<code>app_file_name</code>資料夾裡<code>urls.py</code>的連結。</p>
+<p>7.確定是否正確連接<code>http://127.0.0.1:8000/app_file_name/</code>，若是沒有，看錯誤訊息改正就可以完成。</p>
+<h3 id="執行步驟-list">執行步驟 list</h3>
+<p>基本的五步驟，若是有出現錯誤訊息，除了依據錯誤訊息改正之外，也可照下面步驟做確認</p>
+<ul>
+<li>M <strong>&ldquo;T&rdquo;</strong> V+U: 新增<code>Template資料夾</code></li>
+<li>MT <strong>&ldquo;V&rdquo;</strong> +U: <code>views.py</code>定義要執行的內容</li>
+<li>MTV+ <strong>&ldquo;U&rdquo;</strong>: 設定路徑<code>path</code></li>
+<li>app 登記在<code>setting.py</code>裡面的<code>INSTALLED_APPS</code></li>
+<li>在根目錄（最外層的<code>urls.py</code>）登記 app 入口路徑</li>
+</ul>
+<h2 id="路徑命名-rest">路徑命名 REST</h2>
+<p>REST 全名 Representational State Transfer( 表現層狀態轉移)，統一的命名方式，他是一種設計風格，並不是一種標準。但目前業界普遍採用這種設計。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">資源</th>
+          <th style="text-align: left">GET</th>
+          <th style="text-align: left">PUT</th>
+          <th style="text-align: left">POST</th>
+          <th style="text-align: left">DELETE</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">一組資源的 URI，比如https://example.com/resources</td>
+          <td style="text-align: left">列出 URI，以及該資源組中每個資源的詳細資訊（後者可選）。</td>
+          <td style="text-align: left">使用給定的一組資源替換當前整組資源。</td>
+          <td style="text-align: left">在本組資源中建立/追加一個新的資源。 該操作往往返回新資源的 URL。</td>
+          <td style="text-align: left">刪除<strong>整組</strong>資源。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">單個資源的 URI，比如https://example.com/resources/142</td>
+          <td style="text-align: left">取得指定的資源的詳細資訊，格式可以自選一個合適的網路媒體類型（比如：XML、JSON 等）</td>
+          <td style="text-align: left">替換/建立指定的資源。並將其追加到相應的資源組中。</td>
+          <td style="text-align: left">把指定的資源當做一個資源組，並在其下建立/追加一個新的元素，使其隸屬於當前資源。</td>
+          <td style="text-align: left">刪除<strong>指定</strong>的元素。</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="建立-model">建立 Model</h2>
+<p>Model 主要在決定表單資料的框架。<br>
+我們設計表單的架構，給使用者填入資料。</p>
+<h3 id="model">Model</h3>
+<p>在<code>model.py</code>建立表格需要的欄位</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Resume</span> (models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    title <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>    skill <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextField(null<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    ccg <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>f
+</span></span></code></pre></div><p>使用<code>.CharField``TextField</code>設定為文字欄位</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法</th>
+          <th style="text-align: left">用途</th>
+          <th style="text-align: left">參數/預設</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">.CharField()</td>
+          <td style="text-align: left">文字輸入框</td>
+          <td style="text-align: left">(max_length=50)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">.TextField()</td>
+          <td style="text-align: left">文字輸入區</td>
+          <td style="text-align: left">(null=True)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">每個執行方法會有不同的預設，跑不動時可以看是不是需要的參數沒有放</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">如果要設定必填(null=False)，讓使用者填有必要的就好。</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="makemigration">makemigration</h3>
+<p>當 modle 的框架建立好之後，在建立資料庫之前，必須先做 Migration（遷移）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py makemigrations
+</span></span></code></pre></div><p>執行完成會生出一個新的<code>migrations資料夾</code>裡面會紀錄所有執行 <code>makemigration</code>的步驟</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>(<span style="color:#f92672">.</span>venv) Joanna<span style="color:#a6e22e">@hanedahinase</span> Django Practice <span style="color:#f92672">%</span> python manage<span style="color:#f92672">.</span>py makemigrations
+</span></span><span style="display:flex;"><span>Migrations <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;resumes&#39;</span>:
+</span></span><span style="display:flex;"><span>  resumes<span style="color:#f92672">/</span>migrations<span style="color:#f92672">/</span><span style="color:#ae81ff">0001</span>_initial<span style="color:#f92672">.</span>py
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span> Create model Resume
+</span></span></code></pre></div><p>這時候並還沒有執行，只是先建立描述檔。</p>
+<p>在描述檔裡，會自動生成<code>id</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span> (<span style="color:#e6db74">&#39;id&#39;</span>, models<span style="color:#f92672">.</span>BigAutoField(
+</span></span><span style="display:flex;"><span>    auto_created<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    serialize<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ID&#39;</span>))
+</span></span></code></pre></div><p>這個是系統為了抓資料，自動幫資料編號的指令</p>
+<h3 id="migrate">migrate</h3>
+<p>1.建好描述檔之後，在執行<code>migrate</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py migrate
+</span></span></code></pre></div><p>2.這時候在根目錄的檔案<code>db.sqlite</code>裡面就會建好剛剛設定的 model
+目前裡面的檔案是以位元組的方式呈現，要在 VS Code 裡面看到可讀的檔案，要加外掛<code>SQLite Viewer </code>這樣點進檔案就可以看到東西了！</p>
+<p>3.我們可以根據描述檔的編號，去復原動作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py migrate app_file_name <span style="color:#ae81ff">0001</span>
+</span></span></code></pre></div><p>要小心在以建立資料庫的情況下，刪除欄位會將裡面的資料也一起刪除，所以刪除時要很小心。<br>
+如果要看 migration 的狀態，可以執行<code>showmigration</code>查看列表</p>
+<p>4.從終端機新增資料進去，看看是否設定都正確<br>
+進到 Shell 裡新增資料：指令<code>python manage.py shell</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> resumes.models <span style="color:#f92672">import</span> Resumes
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> Joanna <span style="color:#f92672">=</span> Resumes()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> Joanna<span style="color:#f92672">.</span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CEO&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> Joanna<span style="color:#f92672">.</span>save()
+</span></span></code></pre></div><hr>
+<h1 id="edditing-eara-below">&ldquo;edditing eara below&rdquo;</h1>
+<h2 id="crud">CRUD</h2>
+<h3 id="creat-建立">Creat 建立</h3>
+<p>1.在 html 設定表單</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>form method=&#34;POST&#34; action=&#34;{% url &#39;路徑名稱&#39;%}&#34;&gt;&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><p><code>&lt;form method=&quot;POST&quot;</code>method 指用什麼方法<code>action=&quot;{% url 'resumes:new' %}&quot;</code>action 指送到哪裡<br>
+HTML 的 form 目前的版本只有<code>POST</code> <code>GET</code>兩種方法，如果沒有寫的話，預設是 get,對自己送</p>
+<p>2.為防止 CSRF（Cross Site Request Forgery）跨站請求偽造 ，會需要 CSRF token，在檔案中的<code>form</code>插入指令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span>&gt;{% csrf_token %}&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><p>這個指令會讓系統生成序號，確認這個送出表單是從本站被送出，沒有經過第三方傳送。</p>
+<h3 id="read-讀取">Read 讀取</h3>
+<p>1.從<code>from action=&quot;{ url '接收路徑' }&quot;</code>得到表單資料後，將表單寫入資料庫<br>
+在<code>view.py</code>設定：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>POST:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#準備寫入資料庫</span>
+</span></span><span style="display:flex;"><span>        resume <span style="color:#f92672">=</span> Resume()
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>title <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;title&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>skill <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;skill&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>content <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;content&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>save()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> HttpResponse(<span style="color:#e6db74">&#34;get information&#34;</span>)
+</span></span></code></pre></div><p>這時候從網頁新增的資料，就會在<code>db.sqlite</code>裡面出了。</p>
+<p>2.接下來要讀取資料<code>views.py</code>，然後在頁面上顯示出來<code>index.html</code>。<br>
+在<code>views.py</code>檔案</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>POST:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> HttpResponse(<span style="color:#e6db74">&#34;get information&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#讀取列表</span>
+</span></span><span style="display:flex;"><span>    resumes <span style="color:#f92672">=</span> Resume<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;index.html&#34;</span>,{<span style="color:#e6db74">&#34;resumes&#34;</span>:resumes})
+</span></span></code></pre></div><p><code>Resume.objects.all()</code>抓出寫入 Resume 的所有物件<br>
+<code>{&quot;resumes&quot;:resumes}</code>字典
+在<code>index.html</code>檔案</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  {% for resume in resumes %}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;{{ resume.title }}&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  {% endfor %}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span></code></pre></div><p>目前在畫面上可以看到資料 List 囉</p>
+<p>3.建立一個新的頁面來顯示資料<br>
+在<code>urls.py</code> 檔</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  path(<span style="color:#e6db74">&#34;&lt;int:resume_id&gt;&#34;</span>,file,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span>)
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>在<code>views.py</code> 檔，這邊避免亂數造成網頁壞掉，可以用<code>get_object_or_404</code>做個預防機制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>  resume <span style="color:#f92672">=</span> get_object_or_404(Resume,id<span style="color:#f92672">=</span>resume_id)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;file.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
+</span></span></code></pre></div><p>建立<code>file.html</code>，用{{}}印出資料，再放到對應的 html 標籤裡</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;履歷No.{{ reseme.id }}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>{{ resume.title }} {{ resume.skill }} {{ resume.content }}
+</span></span></code></pre></div><p>4.將 list 加入超連結，可以直連到頁面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:file&#39; resume.id %}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;{{ resume.title }}&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><h3 id="update-更新">Update 更新</h3>
+<p>在顯示已輸入資料的頁面中，增加更新的按鈕，並且連的一個新的頁面做更新。 1.在<code>file.html</code>檔中（顯示資料的頁面），幫按鈕家超連結，引導至更新的頁面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">footer</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:edit&#39; resume.id %}&#34;</span>&gt;&lt;<span style="color:#f92672">button</span>&gt;編輯履歷&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">footer</span>&gt;
+</span></span></code></pre></div><p>2.在<code>urls.py</code>中建立路徑 path</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span> path(<span style="color:#e6db74">&#34;&lt;int:resume_id&gt;/edit&#34;</span>,edit,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;edit&#34;</span>)
+</span></span></code></pre></div><p>3.在<code>views.py</code>中設定執行內容，基本上和<code>file</code>一樣。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">edit</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume,id<span style="color:#f92672">=</span>resume_id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;edit.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
+</span></span></code></pre></div><p>4.再來建立<code>edit.html</code>，資料送回<code>file</code>，用<code>value=&quot;{{ resume.title }}</code>帶入之前填的資訊<br>
+<code>textarea</code>的放在<!-- raw HTML omitted -->內容這邊<!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{% extends &#34;shared/layout.html&#34;%} {% block &#34;content&#34; %}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;修改履歷&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:file&#39; resume.id%}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  {% csrf_token %}&lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>  title &lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ resume.title }}&#34;</span> /&gt;&lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>  content &lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content&#34;</span>&gt;{{ resume.content }}&lt;/<span style="color:#f92672">textarea</span>&gt;
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">button</span>&gt;更新&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{% endblock %}
+</span></span></code></pre></div><p>5.最後<code>views.py</code>裡面設定<code>file</code>接收回傳的資訊</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume,id<span style="color:#f92672">=</span>resume_id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>POST:
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>title <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;title&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>skill <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;skill&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>content <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;content&#34;</span>)
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>save()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#34;resumes:index&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;file.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
+</span></span></code></pre></div><h3 id="delete-刪除">Delete 刪除</h3>
+<p>1.在頁面加入刪除按鈕，並連結到刪除頁面
+<code>file</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">footer</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:edit&#39; resume.id %}&#34;</span>&gt;&lt;<span style="color:#f92672">button</span>&gt;編輯履歷&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:delet&#39; resume.id %}&#34;</span>&gt;&lt;<span style="color:#f92672">button</span>&gt;刪除履歷&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">footer</span>&gt;
+</span></span></code></pre></div><p>2.到<code>urls.py</code>設定路徑</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span> path(<span style="color:#e6db74">&#34;&lt;int:resume_id&gt;/delet&#34;</span>,delet,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;delet&#34;</span>)
+</span></span></code></pre></div><p>3.到<code>views.py</code>設定執行<code>delet</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delet</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume,id<span style="color:#f92672">=</span>resume_id)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;delet.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
+</span></span></code></pre></div><p>4.建立刪除頁面<code>delet.html</code>
+<strong>注意</strong>POST 只能用表單執行，所以這邊的刪除需要用表單包起來。回傳到自己可以不用寫路徑<code>action=&quot;&quot;</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;確認刪除履歷No.{{ resume.id }}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">footer</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:file&#39; resume.id %}&#34;</span>&gt;&lt;<span style="color:#f92672">button</span>&gt;取消刪除&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {% csrf_token %}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span>&gt;確認刪除&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">footer</span>&gt;
+</span></span></code></pre></div><p>5.在<code>views.py</code>設定<code>delet</code>接收到<code>POST</code>之後要做的事</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delet</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume,id<span style="color:#f92672">=</span>resume_id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>POST:
+</span></span><span style="display:flex;"><span>        resume<span style="color:#f92672">.</span>delete()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#34;resumes:index&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;delet.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
+</span></span></code></pre></div><p>終於完成了!!!!!<br>
+👏👏👏👏👏👏<br>
+接下來要挑戰在 30 分鐘內完上面的步驟囉 😱</p>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a class="group btn btn-outline" href="/posts/bk-terminal/" title="Basic knowledge- Terminal">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Basic knowledge- Terminal</span>
+          </div>
+        </a>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/py-function/" title="Python-Function">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">Python-Function</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+  <script src="/js/grid.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

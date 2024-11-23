@@ -20,6 +20,10 @@ draft: false
 
 <!--more-->
 
+### 基礎用語
+
+- CSRF
+
 ### JS:
 
 - set time out
