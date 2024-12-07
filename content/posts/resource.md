@@ -55,4 +55,13 @@ draft: false
 
 ### Others
 
+[Open Ai Token ](https://platform.openai.com/tokenizer)
 [Podcast:Syntax ](https://syntax.fm/)
+[Job GitHub](https://github.com/f2etw/jobs/issues)
+
+### 框架/套件
+
+[tailwind](https://tailwindcss.com/docs/installation)
+[Daisyui](https://daisyui.com/docs/themes/)
+[Alpine.js](https://alpinejs.dev/essentials/installation)
+[Django](https://docs.djangoproject.com/en/5.1/search/?q=auth+password)

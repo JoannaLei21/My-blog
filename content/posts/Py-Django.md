@@ -44,7 +44,7 @@ python -m pip install Django==5.1.3
 **注意要在資料夾名稱後面加`.`才不會開在資料夾裡面**
 
 ```py
-django-admin startproject mysite file-name .
+django-admin startproject mysite(file-name) .
 ```
 
 2.文件裡面會生出一個檔案`manage.py` 執行它
@@ -586,6 +586,164 @@ def delet(request,resume_id):
     return render(request,"delet.html",{"resume":resume})
 ```
 
-終於完成了!!!!!  
+終於完成了基本的 CRUD!!!!!  
 👏👏👏👏👏👏  
 接下來要挑戰在 30 分鐘內完上面的步驟囉 😱
+
+## 增加 app
+
+上面完成了一個 app 的設定，接下來進階一點，再加一個 app 進來
+
+**1.建立新的 app file**
+
+```py
+python manage.py startapp file_name
+```
+
+**2.到`setting.py`裡面登記 app**
+
+**3.設定 model.py**
+
+```py
+class Commenr(models.Model):
+  content = models.TextFiels()
+  created_at = models.DateTimeField(auto_now_add=True)
+```
+
+要連到外面，要使用`ForeignKey`外部鍵，兩個或多個資料表之間的關聯性，簡稱`FK`
+
+```py
+class Commenr(models.Model):
+  resume = model.ForeignKey(Resume, on_delete=models.CASCADE)
+```
+
+指連結到 `Resume`,  
+`on_delete=`代表當上層被刪除時，下層如何反應，有三種選項：
+
+- `models.CASCADE`:依層級，上層被刪，下層跟著刪
+- `models.RESTRICT`:因為下層有資料，所以上層不能被刪除（適合用在訂單上）
+- `models.SET_NULL`:上層被刪時，下層被設為空值
+
+**4.model migrate**  
+做完這個步驟就可以開始做 CRUD 了
+
+**5.Creat**  
+5-1.  
+這邊`comments`的第一個頁面就是`file.html`的頁面，所以直接寫在裡面就好。
+
+```html
+<section>
+  <form method="POST" action="{% url 'resumes:comments' resume.id %}">
+    {% csrf_token %} <br />
+    <textarea name="com_content" id=""></textarea>
+    <button>新增留言</button>
+  </form>
+</section>
+```
+
+5-2.  
+接著設定路徑，按照設計，會顯示在 resume/id/comments。  
+到`resumes.urls.py`
+
+```py
+path("<int:id>/comments",執行,name="comments")
+```
+
+5-3.  
+再來到`comments/views.py`設定執行內容
+
+```py
+@require_POST
+def Com_index(request, id):
+   #抓出resume
+    resume = get_object_or_404(Resume, id=id)
+   #新增comment
+    comment = Comment()
+    comment.content = request.POST.get("com_content")
+    comment.resume_id = resume.id
+    comment.save()
+
+    messages.success(request,"留言已新增")
+  #回去的頁面
+    return redirect ("resumes:file", resume_id = resume.id)
+```
+
+`@require_POST`裝飾器，用途為“只接受 POST”
+這樣留言送出之後，網站會抓到資料並回到`file.html`的頁面。
+
+**6.Read**  
+6-1.  
+將留言顯示在`file`頁面，先到`file`把資料撈出來，在`resumes/views.py`
+
+```py
+def file(request,resume_id):
+  #抓資料
+  commemts = resume.comment_set.all()
+
+  return render(request,"file.html",{"resume":resume, "comments":comments})
+```
+
+`resume.comment_set.all()`裡的`comment_set`是抓資料庫裡的資料
+最後要在字典裡把`"comments":comments`加進去，等一下再`html`才可以連得到
+
+優化：在資料從資料庫抓出來之前先做反向排序
+
+```py
+comments = resume.comment_set.order_by("-creat_at").all()
+```
+
+6-2.  
+去`file.html`用`for in `把字典裡的資料印出來
+
+```html
+<ul>
+  {% for comment in comments %}
+  <li>{{ comment.content|breaks }} {{ comment.created_at}}</li>
+  {% endfor %}
+</ul>
+```
+
+時間設定，在資料庫的裡面，時間一律都是格林威治+0，要改成當地時間的話，曲要在`setting.py`中調整
+
+```html
+TIME_ZONE = "Asia/Taipei"
+```
+
+在 Django 中，有`template tags`語法可以使用，去調整 HTML，`linebreaks`用來替代`<br>`做換行
+
+6-3.  
+在`comments/views.py`裡抓資料的另一種寫法，由`resume`去找留言的資料
+
+```py
+def Com_index(request, id):
+   #抓出resume
+    resume = get_object_or_404(Resume, id=id)
+   #新增comment
+    content = request.POST.get("com_content")
+    comment = resume.comment_set.creat(content = content)
+    comment.save()
+```
+
+**7.Delete**  
+7-1.  
+在`file.html`增加刪除按鈕
+
+```html
+<form method="POST" action="{url '' }"></form>
+{% csrf_token %}
+<button>刪除留言</button>
+```
+
+7-2.  
+`comments/urls.py`設定路徑
+urlpatterns =[
+path("<int:com_id>",Com_delete, name="delete")
+]
+
+7-3.  
+`comments/views.py`建立要執行的
+
+```py
+
+
+```

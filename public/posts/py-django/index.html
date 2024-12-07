@@ -286,6 +286,7 @@
         <li><a href="#delete-刪除">Delete 刪除</a></li>
       </ul>
     </li>
+    <li><a href="#增加-app">增加 app</a></li>
   </ul>
 </nav>
 
@@ -300,7 +301,7 @@
   <meta itemprop="description" content="使用 Django 框架建立網站">
   <meta itemprop="datePublished" content="2024-11-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-11-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="4294">
+  <meta itemprop="wordCount" content="5484">
   <meta itemprop="keywords" content="Python">
 
       <header>
@@ -310,7 +311,7 @@
             Thursday, Nov 21, 2024
           
 
-          | <span>9 minute read</span>
+          | <span>11 minute read</span>
 
           
           | <span>Updated at
@@ -401,7 +402,7 @@
 </span></span></code></pre></div><h3 id="建立專案">建立專案</h3>
 <p>1.輸入下面的指令開啟專案：
 <strong>注意要在資料夾名稱後面加<code>.</code>才不會開在資料夾裡面</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>django<span style="color:#f92672">-</span>admin startproject mysite file<span style="color:#f92672">-</span>name <span style="color:#f92672">.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>django<span style="color:#f92672">-</span>admin startproject mysite(file<span style="color:#f92672">-</span>name) <span style="color:#f92672">.</span>
 </span></span></code></pre></div><p>2.文件裡面會生出一個檔案<code>manage.py</code> 執行它</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py
 </span></span></code></pre></div><p>3.在終端機列出來的 list 可以看到一個 runserver，執行 runserver</p>
@@ -762,9 +763,106 @@ HTML 的 form 目前的版本只有<code>POST</code> <code>GET</code>兩種方�
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#34;resumes:index&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;delet.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume})
-</span></span></code></pre></div><p>終於完成了!!!!!<br>
+</span></span></code></pre></div><p>終於完成了基本的 CRUD!!!!!<br>
 👏👏👏👏👏👏<br>
 接下來要挑戰在 30 分鐘內完上面的步驟囉 😱</p>
+<h2 id="增加-app">增加 app</h2>
+<p>上面完成了一個 app 的設定，接下來進階一點，再加一個 app 進來</p>
+<p><strong>1.建立新的 app file</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>python manage<span style="color:#f92672">.</span>py startapp file_name
+</span></span></code></pre></div><p><strong>2.到<code>setting.py</code>裡面登記 app</strong></p>
+<p><strong>3.設定 model.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Commenr</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>  content <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextFiels()
+</span></span><span style="display:flex;"><span>  created_at <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now_add<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>要連到外面，要使用<code>ForeignKey</code>外部鍵，兩個或多個資料表之間的關聯性，簡稱<code>FK</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Commenr</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>  resume <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>ForeignKey(Resume, on_delete<span style="color:#f92672">=</span>models<span style="color:#f92672">.</span>CASCADE)
+</span></span></code></pre></div><p>指連結到 <code>Resume</code>,<br>
+<code>on_delete=</code>代表當上層被刪除時，下層如何反應，有三種選項：</p>
+<ul>
+<li><code>models.CASCADE</code>:依層級，上層被刪，下層跟著刪</li>
+<li><code>models.RESTRICT</code>:因為下層有資料，所以上層不能被刪除（適合用在訂單上）</li>
+<li><code>models.SET_NULL</code>:上層被刪時，下層被設為空值</li>
+</ul>
+<p><strong>4.model migrate</strong><br>
+做完這個步驟就可以開始做 CRUD 了</p>
+<p><strong>5.Creat</strong><br>
+5-1.<br>
+這邊<code>comments</code>的第一個頁面就是<code>file.html</code>的頁面，所以直接寫在裡面就好。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% url &#39;resumes:comments&#39; resume.id %}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {% csrf_token %} &lt;<span style="color:#f92672">br</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;com_content&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;&lt;/<span style="color:#f92672">textarea</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span>&gt;新增留言&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">section</span>&gt;
+</span></span></code></pre></div><p>5-2.<br>
+接著設定路徑，按照設計，會顯示在 resume/id/comments。<br>
+到<code>resumes.urls.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>path(<span style="color:#e6db74">&#34;&lt;int:id&gt;/comments&#34;</span>,執行,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;comments&#34;</span>)
+</span></span></code></pre></div><p>5-3.<br>
+再來到<code>comments/views.py</code>設定執行內容</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#a6e22e">@require_POST</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Com_index</span>(request, id):
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#抓出resume</span>
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume, id<span style="color:#f92672">=</span>id)
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#新增comment</span>
+</span></span><span style="display:flex;"><span>    comment <span style="color:#f92672">=</span> Comment()
+</span></span><span style="display:flex;"><span>    comment<span style="color:#f92672">.</span>content <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;com_content&#34;</span>)
+</span></span><span style="display:flex;"><span>    comment<span style="color:#f92672">.</span>resume_id <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>id
+</span></span><span style="display:flex;"><span>    comment<span style="color:#f92672">.</span>save()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    messages<span style="color:#f92672">.</span>success(request,<span style="color:#e6db74">&#34;留言已新增&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#回去的頁面</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect (<span style="color:#e6db74">&#34;resumes:file&#34;</span>, resume_id <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>id)
+</span></span></code></pre></div><p><code>@require_POST</code>裝飾器，用途為“只接受 POST”
+這樣留言送出之後，網站會抓到資料並回到<code>file.html</code>的頁面。</p>
+<p><strong>6.Read</strong><br>
+6-1.<br>
+將留言顯示在<code>file</code>頁面，先到<code>file</code>把資料撈出來，在<code>resumes/views.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file</span>(request,resume_id):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#抓資料</span>
+</span></span><span style="display:flex;"><span>  commemts <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>comment_set<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#34;file.html&#34;</span>,{<span style="color:#e6db74">&#34;resume&#34;</span>:resume, <span style="color:#e6db74">&#34;comments&#34;</span>:comments})
+</span></span></code></pre></div><p><code>resume.comment_set.all()</code>裡的<code>comment_set</code>是抓資料庫裡的資料
+最後要在字典裡把<code>&quot;comments&quot;:comments</code>加進去，等一下再<code>html</code>才可以連得到</p>
+<p>優化：在資料從資料庫抓出來之前先做反向排序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>comments <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>comment_set<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#34;-creat_at&#34;</span>)<span style="color:#f92672">.</span>all()
+</span></span></code></pre></div><p>6-2.<br>
+去<code>file.html</code>用<code>for in </code>把字典裡的資料印出來</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  {% for comment in comments %}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;{{ comment.content|breaks }} {{ comment.created_at}}&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  {% endfor %}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span></code></pre></div><p>時間設定，在資料庫的裡面，時間一律都是格林威治+0，要改成當地時間的話，曲要在<code>setting.py</code>中調整</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>TIME_ZONE = &#34;Asia/Taipei&#34;
+</span></span></code></pre></div><p>在 Django 中，有<code>template tags</code>語法可以使用，去調整 HTML，<code>linebreaks</code>用來替代<code>&lt;br&gt;</code>做換行</p>
+<p>6-3.<br>
+在<code>comments/views.py</code>裡抓資料的另一種寫法，由<code>resume</code>去找留言的資料</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Com_index</span>(request, id):
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#抓出resume</span>
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> get_object_or_404(Resume, id<span style="color:#f92672">=</span>id)
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#新增comment</span>
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;com_content&#34;</span>)
+</span></span><span style="display:flex;"><span>    comment <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>comment_set<span style="color:#f92672">.</span>creat(content <span style="color:#f92672">=</span> content)
+</span></span><span style="display:flex;"><span>    comment<span style="color:#f92672">.</span>save()
+</span></span></code></pre></div><p><strong>7.Delete</strong><br>
+7-1.<br>
+在<code>file.html</code>增加刪除按鈕</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{url &#39;&#39; }&#34;</span>&gt;&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>{% csrf_token %}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span>&gt;刪除留言&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span></code></pre></div><p>7-2.<br>
+<code>comments/urls.py</code>設定路徑
+urlpatterns =[
+path(&quot;<a href="int:com_id">int:com_id</a>&quot;,Com_delete, name=&ldquo;delete&rdquo;)
+]</p>
+<p>7-3.<br>
+<code>comments/views.py</code>建立要執行的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"></code></pre></div>
 
       
       <div class="divider"></div>
