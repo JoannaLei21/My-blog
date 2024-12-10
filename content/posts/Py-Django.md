@@ -289,7 +289,6 @@ class Resume (models.Model):
     title = models.CharField(max_length=50)
     skill = models.CharField(max_length=200)
     content = models.TextField(null=True)
-    ccg = models.f
 ```
 
 使用` .CharField``TextField `設定為文字欄位  
