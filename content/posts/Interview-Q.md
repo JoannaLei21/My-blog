@@ -45,7 +45,19 @@ draft: false
 - 面試題\__init_\_.py
 - MVC vs MTV
 - 何謂 RESTful API
+- API
 
 ### HTML:
 
 - [開頭設定代表的意思](https://joannalei21.github.io/posts/html-setting/ "前往分頁")
+
+## 資料庫
+
+- 資料庫的正規化
+
+### 效能
+
+- N + 1 Query N+1 查詢： 是什麼（用一般的 model 做關聯查詢時，會有幾筆搜尋幾次（相同的動作重複跑），是效能殺手），怎麼解決  
+  （ 用 prefetch_related ，變成 1+1）
+
+- lazy query

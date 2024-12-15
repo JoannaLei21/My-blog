@@ -39,6 +39,8 @@ draft: false
 |   CORS   |                                    | 跟 API 有關                              |
 |   WSGI   |                                    |                                          |
 |   CSS    | Cascading Style Sheets             | 階層式樣式表                             |
+|   HTML   | HyperText Markup Language          | 超文本標記語言                           |
+|   SQL    | Structured Query Language          | 結構化查詢語言                           |
 
 ## Python
 

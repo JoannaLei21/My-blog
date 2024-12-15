@@ -19,6 +19,9 @@ tags:
   - Interview
   - Job
   - Basic knowledge
+  - Vue
+  - REACT
+  - Project
 # nolastmod: true
 draft: true
 ---

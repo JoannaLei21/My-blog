@@ -4,7 +4,7 @@ date: "2024-12-10"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/H.png
+cover: /img/README.PNG
 # images:
 #   - /img/cover.jpg
 categories:
@@ -12,8 +12,7 @@ categories:
   - Job Hunting
   - My Coding Life
 tags:
-  - Job
-  - Basic knowledge
+  - Project
 # nolastmod: true
 draft: False
 ---
@@ -94,19 +93,21 @@ TODO xxx
 
 ---
 
-git clone https://github.com/astrocamp/18th-Moordule.git(將專案複製到本地)
+git clone https://github.com/astrocamp/18th-Moordule.git(將專案複製到本地)  
 cd 18th-Moordule(進入專案目錄)
-//
-poetry install(安裝 Poetry 相關套件)
-npm install(安裝 npm 相關套件)
-建立.env(設定環境變數)
-//?
+
+- poetry 輸出 requirements.txt:
+  poetry export -f requirements.txt --output requirements.txt
+- 安裝所有套件: poetry install
 
 ## 執行環境
 
----
-
-npm run dev?
+- 開啟開發伺服器: poetry run python manage.py runserver
+- 啟動 css 打包: npm run css
+- 啟動 js 打包: npm run js
+- 產生資料庫: poetry run python manage.py makemigrations
+- 運行資料庫遷移: poetry run python manage.py migrate
+- 建立應用程式: poetry run python manage.py startapp ${app_dir}
 
 ## 技術使用
 
@@ -118,19 +119,19 @@ npm run dev?
 版本控制：Git
 第三方登入：
 
-郵件發送：Mailgun?
-部署：Heroku?
-Logo:Design.com, Illustrator
+郵件發送：Mailgun?  
+部署：Heroku?  
+Logo:Design.com, Illustrator  
 規劃：Miro, Asana
 
 ## 團隊成員
 
 ---
 
-鄧鈺馨 Cindy [GitHub](https://github.com/YuHsinTengCindy)
+鄧鈺馨 Cindy [GitHub](https://github.com/YuHsinTengCindy)  
 團隊負責：書記
 
-柳澤豐 Richard [GitHub](https://github.com/richart-coder)
+柳澤豐 Richard [GitHub](https://github.com/richart-coder)  
 團隊負責：技術負責人
 
 - 資料庫
@@ -140,11 +141,11 @@ Logo:Design.com, Illustrator
 
 - logo 製作
 
-張家瑞 Gary [GitHub](https://github.com/Gary0306)
+張家瑞 Gary [GitHub](https://github.com/Gary0306)  
 團隊負責：溝通員
 
-陳思妤 Emma [GitHub](https://github.com/Emma-EC)
+陳思妤 Emma [GitHub](https://github.com/Emma-EC)  
 團隊負責：書記
 
-王廷安 [GitHub](https://github.com/Tingan111)
+王廷安 [GitHub](https://github.com/Tingan111)  
 團隊負責：測試負責人
