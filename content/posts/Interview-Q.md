@@ -23,6 +23,7 @@ draft: false
 ### 基礎用語
 
 - CSRF
+- DDOS 測試
 
 ### JS:
 
@@ -61,3 +62,7 @@ draft: false
   （ 用 prefetch_related ，變成 1+1）
 
 - lazy query
+
+## 網站資源
+
+[Explain this](https://www.explainthis.io/zh-hant)

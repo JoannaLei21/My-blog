@@ -4,7 +4,7 @@ date: "2024-12-03"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/H.png
+cover: /img/resume.png
 # images:
 #   - /img/cover.jpg
 categories:
@@ -12,7 +12,7 @@ categories:
 tags:
   - Job
 # nolastmod: true
-draft: true
+draft: false
 ---
 
 履歷講座
@@ -21,8 +21,8 @@ draft: true
 
 ## 講師-洪季洋
 
-mr.bice@hotmail.com
-www.facebook.com/tseyang.hung
+Mail: mr.bice@hotmail.com  
+FB: www.facebook.com/tseyang.hung
 
 ## 思考：
 
@@ -91,19 +91,22 @@ HR:符合標準(過去)
 
 ## 參考資源
 
-Flip card 一體兩面的優點
-人資翻譯蒟蒻卡
+實體資源：(找課務組)
+
+- Flip card 一體兩面的優點
+- 人資翻譯蒟蒻卡
+
 [講師提供參考資源](https://woolly-burn-f33.notion.site/f4fc973cc73241c2b7428b3bd3d98d47)
 
 ## 我的履歷加強
 
-溝通課程：舉例前後對比
-個人品牌的起源？（好奇的角度，了解你這個人）流程？參考人資卡片 先攏統的寫下來沒關係，拿去請同學幫忙看。品牌創立做了什麼，遇到什麼問題，解決什麼問題。
-提升的能力與技能，與未來公司的連結，業界 now how
+- 溝通課程：舉例前後對比
+- 個人品牌的起源？（好奇的角度，了解你這個人）流程？參考人資卡片 先攏統的寫下來沒關係，拿去請同學幫忙看。品牌創立做了什麼，遇到什麼問題，解決什麼問題。
+- 提升的能力與技能，與未來公司的連結，業界 now how
 
-優化流程：實際優化什麼（強調的能力），估算降低多少加班日
-專案人數？專案時長？流程？後續客戶服務提供了什麼？
-製作 SOP：未接電話，配貨流程，客人來電查詢 SOP，生產線追蹤流程
-時間跨度，頻率展現，參考對比數值
+- 優化流程：實際優化什麼（強調的能力），估算降低多少加班日
+- 專案人數？專案時長？流程？後續客戶服務提供了什麼？
+- 製作 SOP：未接電話，配貨流程，客人來電查詢 SOP，生產線追蹤流程
+- 時間跨度，頻率展現，參考對比數值
 
 最強的總結特質放在自我介紹
