@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project on Joanna&#39;s Blog</title>
-    <link>//localhost:1313/tags/project/</link>
+    <link>/tags/project/</link>
     <description>Recent content in Project on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 21 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Line Pay Api串接</title>
-      <link>//localhost:1313/posts/18th-linepayapi/</link>
+      <link>/posts/18th-linepayapi/</link>
       <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/18th-linepayapi/</guid>
+      <guid>/posts/18th-linepayapi/</guid>
       <description>&lt;p&gt;使用 Django 串接 Line Pay&lt;/p&gt;</description>
     </item>
     <item>
       <title>Moordule-README</title>
-      <link>//localhost:1313/posts/18th-readme/</link>
+      <link>/posts/18th-readme/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/18th-readme/</guid>
+      <guid>/posts/18th-readme/</guid>
       <description>&lt;p&gt;專案 README.md&lt;/p&gt;</description>
     </item>
   </channel>

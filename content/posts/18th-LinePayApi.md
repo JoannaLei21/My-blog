@@ -330,7 +330,7 @@ def request_payment(request):
 按下`前往付款`，成功的話會進入下面的頁面（Line 系統頁面）
 ![connectLinePay.html](/images/connectLinePay.png)
 掃描 QR Code 或是登入後，會進到付款頁面（Line 系統頁面）
-![test](/images/line-test-checkout.jpg)
+![test](/images/testCheckout.jpg)
 
 ### 連接失敗
 
