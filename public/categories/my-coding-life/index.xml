@@ -6,8 +6,15 @@
     <description>Recent content in My Coding Life on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/categories/my-coding-life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Line Pay Api串接</title>
+      <link>//localhost:1313/posts/18th-linepayapi/</link>
+      <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/18th-linepayapi/</guid>
+      <description>&lt;p&gt;使用 Django 串接 Line Pay&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Moordule-README</title>
       <link>//localhost:1313/posts/18th-readme/</link>
@@ -28,27 +35,6 @@
       <pubDate>Mon, 14 Oct 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/resource/</guid>
       <description>&lt;h2 id=&#34;上課介紹的資源連結&#34;&gt;上課介紹的資源連結&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>18th Day6 12/15</title>
-      <link>//localhost:1313/posts/18th-day7/</link>
-      <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/18th-day7/</guid>
-      <description>&lt;p&gt;Project Diary 12/15&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>18th Day6 12/14</title>
-      <link>//localhost:1313/posts/18th-day6/</link>
-      <pubDate>Thu, 14 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/18th-day6/</guid>
-      <description>&lt;p&gt;Project Diary 12/14&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>18th Day5 12/13</title>
-      <link>//localhost:1313/posts/18th-day5/</link>
-      <pubDate>Wed, 13 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/18th-day5/</guid>
-      <description>&lt;p&gt;Project Diary 12/13&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

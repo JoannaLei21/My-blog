@@ -12,7 +12,7 @@ categories:
 tags:
   - Project
 # nolastmod: true
-draft: false
+draft: true
 ---
 
 Project Diary 12/13

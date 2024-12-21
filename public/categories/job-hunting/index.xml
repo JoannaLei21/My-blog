@@ -6,8 +6,15 @@
     <description>Recent content in Job Hunting on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/categories/job-hunting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Line Pay Api串接</title>
+      <link>//localhost:1313/posts/18th-linepayapi/</link>
+      <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/18th-linepayapi/</guid>
+      <description>&lt;p&gt;使用 Django 串接 Line Pay&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Moordule-README</title>
       <link>//localhost:1313/posts/18th-readme/</link>

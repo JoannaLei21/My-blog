@@ -113,11 +113,12 @@ cd 18th-Moordule(進入專案目錄)
 
 ---
 
-前端：  
-後端：  
-資料庫：[TablePlus](https://tableplus.com/)
+前端：Tailwind
+後端：
+資料庫：[TablePlus](https://tableplus.com/),PostgreSQL
 版本控制：Git
-第三方登入：
+第三方登入：Googole
+金流：Line Pay,
 
 郵件發送：Mailgun?  
 部署：Heroku?  

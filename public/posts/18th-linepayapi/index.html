@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line Pay Api串接 | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="//localhost:1313/posts/18th-linepayapi/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="使用 Django 串接 Line Pay
+" />
+
+
+<meta name="keywords" content="Project">
+
+
+
+<meta name="generator" content="Hugo 0.138.0">
+
+
+<meta property="og:url" content="//localhost:1313/posts/18th-linepayapi/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Line Pay Api串接">
+  <meta property="og:description" content="使用 Django 串接 Line Pay">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-21T00:00:00+00:00">
+    <meta property="article:tag" content="Project">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Line Pay Api串接">
+  <meta name="twitter:description" content="使用 Django 串接 Line Pay">
+
+
+
+
+<link rel="stylesheet" href="/css/output.css" />
+
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#關於串接-line-pay-這回事">關於串接 Line Pay 這回事</a>
+      <ul>
+        <li><a href="#使用-postman">使用 Postman？</a></li>
+        <li><a href="#具體差別比較">具體差別比較</a></li>
+      </ul>
+    </li>
+    <li><a href="#串接前準備">串接前準備</a>
+      <ul>
+        <li><a href="#1申請line-pay-sandboxhttpsdevelopers-paylinemezhsandbox">1.申請<a href="https://developers-pay.line.me/zh/sandbox">Line Pay Sandbox</a></a></li>
+        <li><a href="#2申請臨時伺服器ngrokhttpsngrokcom">2.申請臨時伺服器<a href="https://ngrok.com/">ngrok</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#開始串接">開始串接</a>
+      <ul>
+        <li><a href="#1最簡單的-html">1.最簡單的 html</a></li>
+        <li><a href="#2env-環境變數">2..env 環境變數</a></li>
+        <li><a href="#3settingpy">3.setting.py</a></li>
+        <li><a href="#4urlspy-設定路徑">4.<code>urls.py</code> 設定路徑</a></li>
+        <li><a href="#5viewpy-設定功能">5.<code>view.py</code> 設定功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#測試">測試</a>
+      <ul>
+        <li><a href="#成功連接">成功連接</a></li>
+        <li><a href="#連接失敗">連接失敗</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Line Pay Api串接">
+  <meta itemprop="description" content="使用 Django 串接 Line Pay">
+  <meta itemprop="datePublished" content="2024-12-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-12-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2371">
+  <meta itemprop="keywords" content="Project">
+
+      <header>
+        <h1 itemprop="headline">Line Pay Api串接</h1>
+        <p class="text-sm">
+          
+            Saturday, Dec 21, 2024
+          
+
+          | <span>5 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Saturday, Dec 21, 2024
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Line%20Pay%20Api%e4%b8%b2%e6%8e%a5&amp;url=//localhost:1313/posts/18th-linepayapi/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/18th-linepayapi/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Line%20Pay%20Api%e4%b8%b2%e6%8e%a5%20//localhost:1313/posts/18th-linepayapi/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/LinePay.png" alt="Line Pay Api串接" />
+      
+
+      <p>使用 Django 串接 Line Pay</p>
+<h2 id="關於串接-line-pay-這回事">關於串接 Line Pay 這回事</h2>
+<h3 id="使用-postman">使用 Postman？</h3>
+<p>很多資源介紹如何串 Line Pay Api，讓 Line Pay 在結帳頁面出現，並連接到消費者的 Line 帳號，連動 LinePay 進行付款。<br>
+大部分的資源皆是透過 <code>Postman</code>來進行串接，基本的步驟很簡單，設置記個基本參數基本就可以搞定。
+今天要介紹的，是使用<code>Django</code>來直接串接 Line Pay，涉事的東西稍微多一些。<br>
+或許你會有疑問，為什麼有簡單的工具放著不用，難道 Django 不能串 Postman？<br>
+這個問題我詢問了 Ai，答案是“可以”！但尚未實際驗證。那差別呢？來看 Ai 怎麼說</p>
+<h3 id="具體差別比較">具體差別比較</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">功能</th>
+          <th style="text-align: left">使用 Postman</th>
+          <th style="text-align: left">不使用 Postman</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">測試啟動時間</td>
+          <td style="text-align: left">快速（幾分鐘即可測試）</td>
+          <td style="text-align: left">需要設置前端或撰寫測試代碼，較耗時</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">重複測試</td>
+          <td style="text-align: left">支援儲存請求並快速重複測試</td>
+          <td style="text-align: left">重複測試需要多次操作或執行測試代碼</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">錯誤診斷與回應分析</td>
+          <td style="text-align: left">提供即時可視化回應，方便檢查</td>
+          <td style="text-align: left">需要檢查日誌或打印資料</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">測試範圍</td>
+          <td style="text-align: left">聚焦於後端 API 的行為</td>
+          <td style="text-align: left">涵蓋整個系統，包括前端、後端與整合流程</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">開發進度需求</td>
+          <td style="text-align: left">適合後端獨立測試</td>
+          <td style="text-align: left">前後端需進一步整合後測試</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">持續測試自動化能力</td>
+          <td style="text-align: left">不支援（需手動測試）</td>
+          <td style="text-align: left">可透過撰寫代碼實現自動化測試流程</td>
+      </tr>
+  </tbody>
+</table>
+<p>總結:</p>
+<ul>
+<li>開發早期：Postman 是測試後端 API 的最佳工具，能快速測試並檢查回應，適合單獨測試後端邏輯。</li>
+<li>開發後期：整合前端後，可進行全流程測試，不使用 Postman 更貼近用戶實際操作；同時建議撰寫單元測試或集成測試代碼，為長期維護提供保障。</li>
+</ul>
+<p>所以雖然說使用 Postman 能省事一些，但身為一個目標百萬年薪的工程師，還是蠻值得了解一下原理自己寫 code 的，對吧～</p>
+<h2 id="串接前準備">串接前準備</h2>
+<p>在正式開始寫 code 之前，需要先準備好下面的必要資料</p>
+<h3 id="1申請line-pay-sandboxhttpsdevelopers-paylinemezhsandbox">1.申請<a href="https://developers-pay.line.me/zh/sandbox">Line Pay Sandbox</a></h3>
+<ul>
+<li>申請完後，登入 Line Pay 輸入寄到 Email 的驗證碼</li>
+<li>在左側選單中，從<code>管理付款連結</code> 點進 <code>管理連結金鑰</code></li>
+<li>點選查詢，並填入傳至 Email 的驗證碼</li>
+<li>下方顯示出<code>channel ID</code>和<code>channel secret key</code>，建議先複製至<code>.env</code>，因為頁面過一段時間會自動登出，要再重輸帳密，小麻煩
+<img src="/images/LinePayCreat.png" alt="LinePayCreat"></li>
+</ul>
+<h3 id="2申請臨時伺服器ngrokhttpsngrokcom">2.申請臨時伺服器<a href="https://ngrok.com/">ngrok</a></h3>
+<ul>
+<li>申請後，進行 Email 驗證並登入</li>
+<li>在頁面左側有表單，找到第二行<code>Stepup &amp; Installation</code></li>
+<li>選擇你的裝置，並按照順序跑指令，我使用 macOS，指令有三個:<br>
+1.安裝<code>brew install ngrok</code><br>
+2.跑<code>ngrok config add-authtoken &lt;your token&gt;</code><br>
+3.進入<code>ngrok http http://localhost:8080</code></li>
+<li>完成上面步驟，在終端機就會出現 ngrok 的介面
+<img src="/images/ngrok.png" alt="nrgok"></li>
+</ul>
+<h2 id="開始串接">開始串接</h2>
+<p>準備好之後，我們就可以開始了！
+這邊會編輯的檔案有：</p>
+<ul>
+<li><code>setting.py</code> 串接.env、HOSTS、CSRF</li>
+<li><code>.env</code> 放置環境變數</li>
+<li><code>view.py</code> 設定功能</li>
+<li><code>urls.py</code> 設定路徑</li>
+<li><code>checkout.htnl</code> 建立 Line 付款頁面，會連線到 Line 的系統</li>
+<li><code>error.html</code> 建立付款失敗頁面，沒有連線成功時會出現</li>
+</ul>
+<h3 id="1最簡單的-html">1.最簡單的 html</h3>
+<p>準備燒腦前，可以先把無腦的 html 給建立出來，會有兩個頁面，這邊先設定最簡單的架構，樣式可以之後調整。<br>
+放置位置<code>/yourapp/templates/payment/xxx.html</code></p>
+<p>1.<code>checkout.htnl</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 改tiltle --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;LINE Pay Checkout&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;dist/bundle.css&#39; %}&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;module&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;dist/bundle.js&#39; %}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- 後面再加樣式 --&gt;</span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;LINE Pay 測試結帳&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      {% csrf_token %}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;前往付款&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>頁面長這樣，只有兩行字
+<img src="/images/checkout.png" alt="checkout.html"></p>
+<p>2.<code>error.html</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 改tiltle --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;LINE Pay Error&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;dist/bundle.css&#39; %}&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;module&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;dist/bundle.js&#39; %}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- 後面再加樣式 --&gt;</span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;付款失敗&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;{{ message }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="2env-環境變數">2..env 環境變數</h3>
+<p>這邊有些重要的 Key，我們不想公開，所以不會放上 git，
+確定<code>.env</code>已經被加入<code>.gitignore</code>，如果有成功加入<code>.env</code>在目錄裡會呈現灰色</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#貼上剛剛在Line Pay 後台得到的，&lt;&gt;不用打</span>
+</span></span><span style="display:flex;"><span>LINE_CHANNEL_ID<span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>你的channel id<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>LINE_CHANNEL_SECRET_KEY<span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>你的channel secret_key<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#測試用的，大家都一樣</span>
+</span></span><span style="display:flex;"><span>LINE_SANDBOX_URL<span style="color:#f92672">=</span>https:<span style="color:#f92672">//</span>sandbox<span style="color:#f92672">-</span>api<span style="color:#f92672">-</span>pay<span style="color:#f92672">.</span>line<span style="color:#f92672">.</span>me
+</span></span><span style="display:flex;"><span>LINE_REQUEST_URL<span style="color:#f92672">=/</span>v3<span style="color:#f92672">/</span>payments<span style="color:#f92672">/</span>request
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 放剛剛ngrok第 3 點出現的路徑位置</span>
+</span></span><span style="display:flex;"><span>HOSTNAME<span style="color:#f92672">=</span><span style="color:#ae81ff">127.0.0.1</span>:<span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div><h3 id="3settingpy">3.setting.py</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 載入.env</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> environ
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> environ<span style="color:#f92672">.</span>Env()
+</span></span><span style="display:flex;"><span>environ<span style="color:#f92672">.</span>Env<span style="color:#f92672">.</span>read_env()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ALLOWED_HOSTS <span style="color:#f92672">=</span> env(<span style="color:#e6db74">&#39;HOSTNAME&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#LINE PAY API 的 CSRF_TRUSTED_ORIGINS</span>
+</span></span><span style="display:flex;"><span>CSRF_TRUSTED_ORIGINS <span style="color:#f92672">=</span> [<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">{</span>env(<span style="color:#e6db74">&#39;HOSTNAME&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>]
+</span></span></code></pre></div><p>這邊如果有串其他的 API 或第三方服務，如 google 登入，在<code>ALLOWED_HOSTS = </code>可能會打架</p>
+<ul>
+<li>google 登入:<code>ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')</code></li>
+<li>Line Pay :<code>ALLOWED_HOSTS = env('HOSTNAME')</code></li>
+</ul>
+<p>這個時候，我們可以這麼處理，來同時包含兩種設定</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e"># google登入：獲取 ALLOWED_HOSTS 的值，默認為 &#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>allowed_hosts_env <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;ALLOWED_HOSTS&#39;</span>, <span style="color:#e6db74">&#39;*&#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># LINE PAY API 的</span>
+</span></span><span style="display:flex;"><span>line_pay_hostname <span style="color:#f92672">=</span> env(<span style="color:#e6db74">&#39;HOSTNAME&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 合併兩者的值</span>
+</span></span><span style="display:flex;"><span>ALLOWED_HOSTS <span style="color:#f92672">=</span> allowed_hosts_env <span style="color:#f92672">+</span> [line_pay_hostname]
+</span></span></code></pre></div><h3 id="4urlspy-設定路徑">4.<code>urls.py</code> 設定路徑</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .views <span style="color:#f92672">import</span> request_payment
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;你的app名字&#34;</span>
+</span></span><span style="display:flex;"><span>urlpatterns <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    path(<span style="color:#e6db74">&#39;request/&#39;</span>, request_payment, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;request_payment&#39;</span>),
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><h3 id="5viewpy-設定功能">5.<code>view.py</code> 設定功能</h3>
+<p>這邊對我來說是最複雜的地方，如果使用 Postman，在對應的位置放入需要的值就好，這邊我們需要自己設定</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#基本的</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render, redirect
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pathlib <span style="color:#f92672">import</span> Path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#line pay 會用到的：</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> uuid
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hmac
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> environ
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#連接.env變數</span>
+</span></span><span style="display:flex;"><span>BASE_DIR <span style="color:#f92672">=</span> Path(__file__)<span style="color:#f92672">.</span>resolve()<span style="color:#f92672">.</span>parent<span style="color:#f92672">.</span>parent
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> environ<span style="color:#f92672">.</span>Env()
+</span></span><span style="display:flex;"><span>environ<span style="color:#f92672">.</span>Env<span style="color:#f92672">.</span>read_env()
+</span></span></code></pre></div><p>會有兩個需要設定：<code>header</code>&amp;<code>body</code></p>
+<p>1.設定<code>header</code>，官方文件有說 header 需要的東西，在這邊會需要幫這些資料加密
+<a href="https://developers-pay.line.me/zh/online/pre-requisites">官方文件</a>截圖：
+<img src="/images/headerSetting.png" alt="headerSetting">
+官網上有 JavaScrip 的程式碼，彈 Django 是使用 Python，所以我們來設定程式碼：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#line pay API header</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_headers</span>(body, uri):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#帶入在.env的資訊</span>
+</span></span><span style="display:flex;"><span>    channel_id <span style="color:#f92672">=</span> env(<span style="color:#e6db74">&#39;LINE_CHANNEL_ID&#39;</span>)
+</span></span><span style="display:flex;"><span>    secret_key <span style="color:#f92672">=</span> env(<span style="color:#e6db74">&#39;LINE_CHANNEL_SECRET_KEY&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#生成隨機的UUID並轉為文字格式，為防止重複提交</span>
+</span></span><span style="display:flex;"><span>    nonce <span style="color:#f92672">=</span> str(uuid<span style="color:#f92672">.</span>uuid4())
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#header 轉換成json格式</span>
+</span></span><span style="display:flex;"><span>    body_to_json <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(body)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 組裝簽名</span>
+</span></span><span style="display:flex;"><span>    message <span style="color:#f92672">=</span> secret_key <span style="color:#f92672">+</span> uri <span style="color:#f92672">+</span> body_to_json <span style="color:#f92672">+</span> nonce
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#轉二進制，後續雜湊時使用</span>
+</span></span><span style="display:flex;"><span>    binary_message <span style="color:#f92672">=</span> message<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>    binary_secret_key <span style="color:#f92672">=</span> secret_key<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#雜湊，使用SHA256</span>
+</span></span><span style="display:flex;"><span>    hash <span style="color:#f92672">=</span> hmac<span style="color:#f92672">.</span>new(binary_secret_key, binary_message, hashlib<span style="color:#f92672">.</span>sha256)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#將hash轉為Base64編碼的字符串</span>
+</span></span><span style="display:flex;"><span>    signature <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(hash<span style="color:#f92672">.</span>digest())<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#官方文件中設定的，把剛設定好的變數帶入</span>
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Content-Type&#34;</span>: <span style="color:#e6db74">&#34;application/json&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;X-LINE-ChannelId&#34;</span>:channel_id,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;X-LINE-ChannelSecret&#34;</span>:secret_key,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;X-LINE-Authorization-Nonce&#34;</span>: nonce,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;X-LINE-Authorization&#34;</span>: signature,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> headers
+</span></span></code></pre></div><p>2.設定<code>body</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#line pay API body</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">request_payment</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;POST&#34;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 設定訂單與付款資訊</span>
+</span></span><span style="display:flex;"><span>        order_id <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;order_</span><span style="color:#e6db74">{</span>str(uuid<span style="color:#f92672">.</span>uuid4())<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        package_id <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;package_</span><span style="color:#e6db74">{</span>str(uuid<span style="color:#f92672">.</span>uuid4())<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#設定商品資訊，會出現在Line Pay請款頁面資訊中</span>
+</span></span><span style="display:flex;"><span>        payload <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;amount&#39;</span>: <span style="color:#ae81ff">399</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;currency&#39;</span>: <span style="color:#e6db74">&#39;TWD&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;orderId&#39;</span>: order_id,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;packages&#39;</span>: [{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;id&#39;</span>: package_id,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;amount&#39;</span>: <span style="color:#ae81ff">399</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;products&#39;</span>: [{
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;id&#39;</span>: <span style="color:#e6db74">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;方案Ｂ超好揪&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;quantity&#39;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;price&#39;</span>: <span style="color:#ae81ff">399</span>,
+</span></span><span style="display:flex;"><span>                }]
+</span></span><span style="display:flex;"><span>            }],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;redirectUrls&#39;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;confirmUrl&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">{</span>env(<span style="color:#e6db74">&#39;HOSTNAME&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">/payment/confirm&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;cancelUrl&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">{</span>env(<span style="color:#e6db74">&#39;HOSTNAME&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">/payment/cancel&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 發送 API 請求</span>
+</span></span><span style="display:flex;"><span>        uri <span style="color:#f92672">=</span> env(<span style="color:#e6db74">&#39;LINE_REQUEST_URL&#39;</span>)
+</span></span><span style="display:flex;"><span>        headers <span style="color:#f92672">=</span> create_headers(payload, uri)
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>env(<span style="color:#e6db74">&#39;LINE_SANDBOX_URL&#39;</span>)<span style="color:#e6db74">}{</span>uri<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(url, headers<span style="color:#f92672">=</span>headers, data<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>dumps(payload))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 根據狀態，處理回應</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> data[<span style="color:#e6db74">&#39;returnCode&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0000&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> redirect(data[<span style="color:#e6db74">&#39;info&#39;</span>][<span style="color:#e6db74">&#39;paymentUrl&#39;</span>][<span style="color:#e6db74">&#39;web&#39;</span>])
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#34;payment/error.html&#34;</span>, {<span style="color:#e6db74">&#34;message&#34;</span>: data[<span style="color:#e6db74">&#39;returnMessage&#39;</span>]})
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#34;payment/error.html&#34;</span>, {<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>response<span style="color:#f92672">.</span>status_code<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#34;payment/checkout.html&#34;</span>)
+</span></span></code></pre></div><h2 id="測試">測試</h2>
+<p>設定之後，就可以開 server，到前面設定的路徑去看頁面
+<img src="/images/checkout.png" alt="checkout.html"></p>
+<h3 id="成功連接">成功連接</h3>
+<p>按下<code>前往付款</code>，成功的話會進入下面的頁面（Line 系統頁面）
+<img src="/images/connectLinePay.png" alt="connectLinePay.html">
+掃描 QR Code 或是登入後，會進到付款頁面（Line 系統頁面）
+<img src="/images/line-test-checkout.jpg" alt="test"></p>
+<h3 id="連接失敗">連接失敗</h3>
+<p>但如果按下<code>前往付款</code>，看到的是錯誤頁面，代表連線沒有成功，需要再看看設定哪邊有問題</p>
+<p>成功之後就是來和其他的 app 做串接，下一篇在介紹囉</p>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <div></div>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/18th-readme/" title="Moordule-README">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">Moordule-README</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+  <script src="/js/grid.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
