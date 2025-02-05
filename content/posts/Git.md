@@ -13,7 +13,7 @@ categories:
 tags:
   - Basic knowledge
 # nolastmod: true
-draft: true
+draft: false
 ---
 
 用 Git 管理檔案

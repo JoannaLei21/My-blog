@@ -10,16 +10,7 @@ cover: /img/H.png
 categories:
   - Learning Code
 tags:
-  - HTML
-  - CSS
-  - JavaScript
-  - Python
-  - Interview
-  - Job
-  - Basic knowledge
-  - Vue
-  - REACT
-  - Project
+  - Database
 # nolastmod: true
 draft: true
 ---
