@@ -8,8 +8,20 @@
     <loc>/posts/</loc>
     <lastmod>2025-02-18T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/posts/apple-watch-app/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/categories/</loc>
-    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/my-coding-life/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/project/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/interview/</loc>
     <lastmod>2025-02-05T00:00:00+00:00</lastmod>
@@ -18,9 +30,6 @@
     <lastmod>2025-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/job-hunting/</loc>
-    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2025-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/interview-urfit/</loc>
@@ -39,12 +48,6 @@
     <lastmod>2025-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/18th-googlemap/</loc>
-    <lastmod>2024-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/my-coding-life/</loc>
-    <lastmod>2024-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/project/</loc>
     <lastmod>2024-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/18th-linepayapi/</loc>

@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Coding Life</title>
+      <link>/categories/my-coding-life/</link>
+      <pubDate>Thu, 06 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/categories/my-coding-life/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Job Hunting</title>
       <link>/categories/job-hunting/</link>
@@ -20,13 +27,6 @@
       <link>/categories/learning-code/</link>
       <pubDate>Fri, 24 Jan 2025 00:00:00 +0000</pubDate>
       <guid>/categories/learning-code/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>My Coding Life</title>
-      <link>/categories/my-coding-life/</link>
-      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>/categories/my-coding-life/</guid>
       <description></description>
     </item>
   </channel>
