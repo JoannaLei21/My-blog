@@ -108,5 +108,6 @@ PushNotificationPayload.apns：推播資料，可用在模擬器上測試推播�
 ## 提交至 App Store
 
 ## 參考資料：
+[Apple官方教學](https://developer.apple.com/tutorials/swiftui)
 [Harry Li-動手做一支 Apple Watch App 吧！](https://zhgchg.li/posts/e85d77b05061/)
 
