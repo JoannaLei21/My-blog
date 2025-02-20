@@ -9,10 +9,8 @@ cover: /img/JS-variableHosting.png
 #   - /img/cover.jpg
 categories:
   - Learning Code
-  - Job Hunting
 tags:
   - JavaScript
-  - Interview
 # nolastmod: true
 draft: false
 ---

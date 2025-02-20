@@ -10,7 +10,6 @@ cover: /img/LinePay.png
 categories:
   - Learning Code
   - Job Hunting
-  - My Coding Life
 tags:
   - Project
 # nolastmod: true

@@ -11,9 +11,7 @@ cover: /img/map.png
 categories:
   - Learning Code
   - Job Hunting
-  - My Coding Life
 tags:
-  - JavaScript
   - Project
 # nolastmod: true
 draft: flase

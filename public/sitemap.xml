@@ -32,7 +32,16 @@
     <loc>/posts/urfit-day-01/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/posts/feedback/</loc>
+    <lastmod>2025-02-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/apple-watch-app/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/job-hunting/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/learning-code/</loc>
     <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/project/</loc>
@@ -41,16 +50,10 @@
     <loc>/tags/interview/</loc>
     <lastmod>2025-02-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/job-hunting/</loc>
-    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/interview-urfit/</loc>
     <lastmod>2025-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/javascript/</loc>
-    <lastmod>2025-01-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/learning-code/</loc>
     <lastmod>2025-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/python/</loc>
@@ -115,9 +118,6 @@
   </url><url>
     <loc>/posts/interview-q/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/css/</loc>
-    <lastmod>2024-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/hugo-buildup-webpage/</loc>
     <lastmod>2024-11-17T00:00:00+00:00</lastmod>

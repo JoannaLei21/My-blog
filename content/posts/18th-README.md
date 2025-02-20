@@ -10,7 +10,6 @@ cover: /img/README.PNG
 categories:
   - Learning Code
   - Job Hunting
-  - My Coding Life
 tags:
   - Project
 # nolastmod: true

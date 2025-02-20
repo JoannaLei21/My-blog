@@ -9,10 +9,8 @@ cover: /img/HTML-Setting.png
 #   - /img/cover.jpg
 categories:
   - Learning Code
-  - Job Hunting
 tags:
   - HTML
-  - Interview
 # nolastmod: true
 draft: false
 ---

@@ -8,7 +8,7 @@ cover: /img/Resurce.PNG
 # images:
 #   - /img/cover.jpg
 categories:
-  - My Coding Life
+  - Learning Code
 tags:
   - Basic knowledge
 # nolastmod: true

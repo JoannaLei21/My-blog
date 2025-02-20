@@ -10,10 +10,7 @@ cover: /img/hugoCover.png
 categories:
   - Learning Code
 tags:
-  - HTML
-  - CSS
-  - JavaScript
-  - Python
+
 # nolastmod: true
 draft: false
 ---

@@ -10,10 +10,7 @@ cover: /img/ASTRO.png
 categories:
   - My Coding Life
 tags:
-  - HTML
-  - CSS
-  - JavaScript
-  - Python
+
 # nolastmod: true
 draft: false
 ---

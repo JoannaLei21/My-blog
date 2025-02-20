@@ -7,7 +7,8 @@ author: Joanna Lei
 cover: /img/watchApp.png
 #   - /img/cover.jpg
 categories:
-  - My Coding Life
+  - Learning Code
+  - Job Hunting
 tags:
   - Project
 # nolastmod: true
