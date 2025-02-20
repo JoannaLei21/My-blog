@@ -48,8 +48,13 @@ Free Wifi X 插座 X 低消一杯飲品
 
 ### 明天進度
 - Day14、15跳過，看Day16 17
+- 把條件設衝來
+- 新增一筆資料到HASURA，去哪裡拿陣列
+
+### 待回答的問題
 - Q.1: useState & useEffect的差別是？
 - Q.2: stateless？
 - Q.3: 為什麼jsx可以直接操作
 - Q.4: 查名詞 ：Template string 模板字串``
 - Q.5: 什麼是Migration
+
