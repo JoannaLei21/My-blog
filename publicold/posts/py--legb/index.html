@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-LEGB | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="//localhost:1313/posts/py--legb/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="Function 的作用域" />
+
+
+<meta name="keywords" content="Python">
+
+
+
+<meta name="generator" content="Hugo 0.140.1">
+
+
+<meta property="og:url" content="//localhost:1313/posts/py--legb/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Python-LEGB">
+  <meta property="og:description" content="Function 的作用域">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python-LEGB">
+  <meta name="twitter:description" content="Function 的作用域">
+
+
+
+
+<link rel="stylesheet" href="/css/output.css" />
+
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="//localhost:1313/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#function-的作用域">Function 的作用域</a></li>
+    <li><a href="#legb-規則">LEGB 規則</a>
+      <ul>
+        <li><a href="#local-區域">Local 區域</a></li>
+        <li><a href="#enclosing-封閉">Enclosing 封閉</a></li>
+        <li><a href="#global-全域">Global 全域</a></li>
+        <li><a href="#built-in-內建">Built-in 內建</a></li>
+        <li><a href="#a--a--1">a = a + 1</a></li>
+        <li><a href="#global--nonlocal">global &amp; nonlocal</a></li>
+        <li><a href="#函數-vs-方法">函數 vs 方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Python-LEGB">
+  <meta itemprop="description" content="Function 的作用域">
+  <meta itemprop="datePublished" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="612">
+  <meta itemprop="keywords" content="Python">
+
+      <header>
+        <h1 itemprop="headline">Python-LEGB</h1>
+        <p class="text-sm">
+          
+            Tuesday, Nov 19, 2024
+          
+
+          | <span>2 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Tuesday, Nov 19, 2024
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Python-LEGB&amp;url=//localhost:1313/posts/py--legb/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=//localhost:1313/posts/py--legb/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Python-LEGB%20//localhost:1313/posts/py--legb/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/LEGB.png" alt="Python-LEGB" />
+      
+
+      <h2 id="function-的作用域">Function 的作用域</h2>
+<h2 id="legb-規則">LEGB 規則</h2>
+<p>一般的程式語言，作用域大致分為全域和區域兩種。<br>
+在 Python 裡，作用域則有小到大分為以下四種：</p>
+<h3 id="local-區域">Local 區域</h3>
+<p>當自己家裡有的時候，就用自己家的，而且外面拿不到<br>
+這個就是 local</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hi</span>():
+</span></span><span style="display:flex;"><span>  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Joanna&#34;</span>
+</span></span><span style="display:flex;"><span>  print (<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;hello </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="enclosing-封閉">Enclosing 封閉</h3>
+<p>只有在高階函數裡會出現，也就是函數裡有函數時</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hi</span>():
+</span></span><span style="display:flex;"><span>  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Joanna&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_hi</span>():
+</span></span><span style="display:flex;"><span>    print (<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;hello </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>這時候<code>inner_hi()</code>裡面沒有<code>name</code>，外面家裡有，這時候<code>name = &quot;Joanna&quot;</code>就是 enclosing</p>
+<h3 id="global-全域">Global 全域</h3>
+<p>在外面沒有被包起來的<code>name = &quot;Lei&quot;</code>，就是 global</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Lei&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hi</span>():
+</span></span><span style="display:flex;"><span>  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Joanna&#34;</span>
+</span></span><span style="display:flex;"><span>  print (<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;hello </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="built-in-內建">Built-in 內建</h3>
+<p>Python 有些非關鍵字的內建函數，如<code>print</code> <code>list</code> <code>int</code></p>
+<p>在找變數時，會依照範圍大小的順序去找：L-&gt;E-&gt;G-&gt;B。</p>
+<h3 id="a--a--1">a = a + 1</h3>
+<p>當在函數內做賦值時，就是在宣告區域變數。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  a <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  print(a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi()<span style="color:#75715e">#2</span>
+</span></span><span style="display:flex;"><span>print(a)<span style="color:#75715e">#1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  print(a)
+</span></span></code></pre></div><p>這時候，<code>a</code>在函數裡面做了宣告的動作，但卻沒有實際賦值，這時候會出現錯誤訊息<br>
+另外下面的也會出現一樣的錯誤訊息</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  print(a)
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>像是 JavaScript 裡面的 TDZ</p>
+<h3 id="global--nonlocal">global &amp; nonlocal</h3>
+<p>在函數內可以用<code>global</code>改變外面變數的值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">global</span> a <span style="color:#75715e">#從這邊開始，後面的a都是指外面的a</span>
+</span></span><span style="display:flex;"><span>  a <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">#把a重新賦值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi()<span style="color:#75715e">#2</span>
+</span></span><span style="display:flex;"><span>print(a)<span style="color:#75715e">#2</span>
+</span></span></code></pre></div><p><code>nonlocal</code>不等於<code>global</code>，帶表目前的不是 local，需要往外找 enclosing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hey</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">nonlocal</span> a <span style="color:#75715e">#代表這邊不是local，所以往外找會找到 a = 10</span>
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  hey()
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;1-</span><span style="color:#e6db74">{</span>a<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">#1-11</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hi()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;1-</span><span style="color:#e6db74">{</span>a<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">#1-0</span>
+</span></span></code></pre></div><h3 id="函數-vs-方法">函數 vs 方法</h3>
+<p>基本上都是函數</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>number <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>numbers<span style="color:#f92672">.</span>sort() <span style="color:#75715e">#方法 method，對物件做“sort”，會改變物件</span>
+</span></span><span style="display:flex;"><span>sorted(numbers) <span style="color:#75715e">#函數 function 將物件變成參數，不會改變物件</span>
+</span></span></code></pre></div>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a class="group btn btn-outline" href="/posts/py-function/" title="Python-Function">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Python-Function</span>
+          </div>
+        </a>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/py-set/" title="Python-Set">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">Python-Set</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 - 2025 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 - 2025 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+  <script src="/js/grid.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

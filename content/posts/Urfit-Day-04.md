@@ -4,7 +4,7 @@ date: "2025-02-20"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/D4-Job.png
+cover: /img/D04-Job.png
 # images:
 #   - /img/cover.jpg
 categories:
@@ -27,7 +27,7 @@ draft: false
 - Day10： 設定useState、將JSX拆出來，變成React元件、設定不同條件下的樣式變化
 - Day11： [將父層資料傳到子層資料](https://codepen.io/JoannaLei/pen/qEBbXXR?editors=0010)
 - Day12： [React 套件 for Chrom](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 
--Day13：
+-Day13： 中央氣象台申請API KEY、申請CodeSandBox
 
 
 ### 會議  

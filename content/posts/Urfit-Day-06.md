@@ -79,7 +79,7 @@ draft: false
   ]
   const actions = actionContents.map(({ key, withKey, tabkey, contentKey }
     )  => ({
-    condition: ==(enabledModules[key])== && (hasTabSetting ? tabsContents.includes(key) : withKey),
+    condition: (enabledModules[key]) && (hasTabSetting ? tabsContents.includes(key) : withKey),
     link: `/creators/${id}?tabkey=${tabkey}`,
     label: formatMessage(contentKey),
   }))
