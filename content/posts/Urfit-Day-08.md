@@ -54,8 +54,14 @@ draft: false
 - Q.5: upSert : upDate or insert/ onConflict 
 - Q.6: 資料庫 Constraints unique / PK
 
-### 遇到的問題
-- 
+### 前端小統整
+
+0. JSX
+1. useState, useEffect，進階：減少rerender的次數
+2. useContex，進階：redux
+3. useMemo, useCallback
+4. useRef，元件Keep住(快取)與效能相關
+5. 進階functional Programin，可以先了解OOP物件導向
 
 ## 今日心得
 聽大家聊拿到的offer，覺得起薪高的，聽起來都蠻hardcore的，可能工作量大，可能責任重，可能需要的是及戰力。  

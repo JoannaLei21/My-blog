@@ -6,8 +6,15 @@
     <description>Recent content in Learning Code on Joanna&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/learning-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GraphQL</title>
+      <link>/posts/graphql/</link>
+      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/graphql/</guid>
+      <description>&lt;h2 id=&#34;graphql-是什麼&#34;&gt;GraphQL 是什麼？&lt;/h2&gt;</description>
+    </item>
     <item>
       <title>apple watch App</title>
       <link>/posts/apple-watch-app/</link>
