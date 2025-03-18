@@ -4,7 +4,7 @@ date: "2025-03-06"
 author: Joanna Lei
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/D11-Job.png
+cover: /img/D011-Job.png
 # images:
 #   - /img/cover.jpg
 categories:
