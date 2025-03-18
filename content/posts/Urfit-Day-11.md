@@ -87,3 +87,5 @@ query GetMemberPhones($memberIdList: [String!]) {
 4. 了解網頁的`七層協定`，如HTTP協定、封包等等  
 5. 延伸思考：為什麽要有型別？ 關於override  
 6. 進階題：記憶體配置  
+
+
