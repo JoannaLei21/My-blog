@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urfit Day 12 | Joanna&#39;s Blog</title>
+
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+
+<link rel="canonical" href="/posts/urfit-day-12/" />
+
+
+
+<meta name="author" content="Joanna Lei" />
+<meta name="description" content="Day-12 交作業" />
+
+
+<meta name="keywords" content="Job">
+
+
+
+<meta name="generator" content="Hugo 0.140.1">
+
+
+<meta property="og:url" content="/posts/urfit-day-12/">
+  <meta property="og:site_name" content="Joanna&#39;s Blog">
+  <meta property="og:title" content="Urfit Day 12">
+  <meta property="og:description" content="Day-12 交作業">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-07T00:00:00+00:00">
+    <meta property="article:tag" content="Job">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Urfit Day 12">
+  <meta name="twitter:description" content="Day-12 交作業">
+
+
+
+
+  
+
+<link rel="stylesheet" href="/css/output.min.css" />
+
+
+
+
+    
+
+
+<style>
+  pre {
+    padding: 1em;
+    overflow: auto;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/cat.png" alt="Joanna&#39;s Bolg" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="/" class="text-lg font-semibold cursor-pointer">
+          Joanna&#39;s Bolg
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-[1] shadow-md">
+        
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="All Tags">
+    <ion-icon name="pricetags"></ion-icon>
+    All Tags
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+      
+      
+      <div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+      
+      
+
+      
+      
+
+      
+
+      
+      
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="Archives">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="All Categories">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="All Tags">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="mt-4 px-4">
+  
+  <div class="relative" x-data="{ height: '' }" x-init="height = $el.scrollHeight + 'px'">
+  
+    
+    <div class="absolute right-0 lg:w-36 xl:w-48 hidden lg:block" :style="{ height }">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#day-12-交作業">Day-12 交作業</a></li>
+      </ul>
+    </li>
+    <li><a href="#今日進度">今日進度</a>
+      <ul>
+        <li><a href="#交作業">交作業</a></li>
+        <li><a href="#拿到的票ing">拿到的票ing</a></li>
+        <li><a href="#react">React:</a></li>
+        <li><a href="#會議">會議</a></li>
+        <li><a href="#明天進度">明天進度</a></li>
+        <li><a href="#回答出來的問題">回答出來的問題</a></li>
+        <li><a href="#待回答的問題們">待回答的問題們</a></li>
+        <li><a href="#遇到的問題">遇到的問題</a></li>
+      </ul>
+    </li>
+    <li><a href="#今日心得">今日心得</a></li>
+    <li><a href="#作業">作業</a></li>
+  </ul>
+</nav>
+
+      <div class="dream-adsense px-5">
+      
+      </div>
+    </div>
+    
+    <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Urfit Day 12">
+  <meta itemprop="description" content="Day-12 交作業">
+  <meta itemprop="datePublished" content="2025-03-07T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-07T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1183">
+  <meta itemprop="keywords" content="Job">
+
+      <header>
+        <h1 itemprop="headline">Urfit Day 12</h1>
+        <p class="text-sm">
+          
+            Friday, Mar 7, 2025
+          
+
+          | <span>3 minute read</span>
+
+          
+          | <span>Updated at
+            
+              Friday, Mar 7, 2025
+            </span>
+          
+        </p>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+  
+  <span>@</span>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">Joanna Lei</span>
+    
+  
+  </span>
+</div>
+
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Urfit%20Day%2012&amp;url=/posts/urfit-day-12/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=/posts/urfit-day-12/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Urfit%20Day%2012%20/posts/urfit-day-12/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      
+      <img src="/img/D12-Job.png" alt="Urfit Day 12" />
+      
+
+      <h3 id="day-12-交作業">Day-12 交作業</h3>
+<h2 id="今日進度">今日進度</h2>
+<h3 id="交作業">交作業</h3>
+<p><strong>練習</strong></p>
+<ol>
+<li>練習設定query，只用一個<code>memberId</code>,找出這個相關的<code>phone</code> &amp; <code>是否vaild</code>。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GetMemberPhones</span> <span style="color:#f92672">=</span>  <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">query getMemberPhone($memberId: String!) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  member(where: { id: { _eq: $memberId } }) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    member_phones {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      is_valid
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      phone
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">variables: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#34;memberId&#34;: &#34;222222&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span></code></pre></div><p><strong>在Hasurq裡面<code>_in</code>, <code>_eq</code>代表意思？</strong><br>
+這些是運算子，他們負責透過不同的方式來進行過濾。<br>
+比較運算子用於比較同一類型的值。例如，比較兩個數字、兩個字串、兩個日期等。</p>
+<ul>
+<li>
+<p>透過比較值進行過濾<br>
+相等運算子：等於<code>_eq</code>, 不等於<code>_neq</code>:
+過濾或檢查空值：<code>_is_null</code>
+大於或小於運算子：大於<code>_gt</code>, 小於<code>_lt</code>, 大於等於 <code>gte</code>, 小於等於<code>_lte</code><br>
+基於清單的搜尋運算子：<code>_in</code>, <code>_nin</code></p>
+</li>
+<li>
+<p>按布林表達式過濾<br>
+根據某些標準不匹配進行篩選：<code>_not</code><br>
+在同一個查詢中使用多個篩選器： <code>_and</code>, <code>_or</code></p>
+</li>
+<li>
+<p>按文字過濾(較複雜)：<br>
+包含文字<code>_like</code>, 不包含文字<code>_nlike</code>, 包含文字不分大小寫<code>_ilike</code>, 不包含文字不分大小寫<code>_nilike</code>,</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gql" data-lang="gql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> <span style="color:#a6e22e">UsersWithNameLike</span> {
+</span></span><span style="display:flex;"><span>  users(where: { <span style="color:#a6e22e">name</span>: { <span style="color:#a6e22e">_ilike</span>: <span style="color:#e6db74">&#34;%john%&#34;</span> } }) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span>
+</span></span><span style="display:flex;"><span>    name
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>開頭為<code>_similar</code>, 開頭不為<code>_nsimilar</code>,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gql" data-lang="gql"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>!<span style="color:#960050;background-color:#1e0010">--</span> 取得名字以 A 或 C 開頭的作者清單<span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#960050;background-color:#1e0010">--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">query</span> <span style="color:#a6e22e">AuthorsWithAorC</span> {
+</span></span><span style="display:flex;"><span>  authors(where: {<span style="color:#a6e22e">name</span>: {<span style="color:#a6e22e">_similar</span>: <span style="color:#e6db74">&#34;(A|C)%&#34;</span>} }) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span>
+</span></span><span style="display:flex;"><span>    name
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>與正規表示式相符<code>_regex</code>, 與正規表示式不相符<code>_nregex</code>, <code>_iregex</code>, <code>_niregex</code>,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gql" data-lang="gql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> <span style="color:#a6e22e">ArticlesWithRegex</span> {
+</span></span><span style="display:flex;"><span>  articles(where: {<span style="color:#a6e22e">title</span>: {<span style="color:#a6e22e">_regex</span>: <span style="color:#e6db74">&#34;[ae]met&#34;</span>} }) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span>
+</span></span><span style="display:flex;"><span>    title
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>**上面他們跟SQL對應的關係是？ **</p>
+<p>**他們分別吃什麼類型＆吐出什們類型 **</p>
+<p><strong>GraphQL的基礎型別有哪些？</strong>（進階：如何自訂義型別）
+<code>json</code>, <code>jsonB</code>, <code>Integer</code>, <code>Float</code>, <code>Double</code>, <code>Text</code>, <code>Boolean</code>,<code>Date</code>, <code>Time</code>, Timestamp`</p>
+<p><strong>參考文件</strong><br>
+<a href="https://hasura.io/docs/3.0/graphql-api/queries/filters/index">Hasura Doc</a></p>
+<h3 id="拿到的票ing">拿到的票ing</h3>
+<ul>
+<li>表單更新資訊狀態後，會花很多時間重新抓資料，需要優化效能</li>
+</ul>
+<h3 id="react">React:</h3>
+<p><a href="https://ithelp.ithome.com.tw/articles/10216355">鐵人賽React文章：從 Hooks 開始，讓你的網頁 React 起來</a></p>
+<ul>
+<li>Day 17</li>
+</ul>
+<h3 id="會議">會議</h3>
+<ul>
+<li>部署會議：同事們特忙，因為上禮拜沒有部署。我在旁邊做GraphQL的資料整理。</li>
+</ul>
+<h3 id="明天進度">明天進度</h3>
+<ul>
+<li>週末來查詢之前還沒回答的問題們</li>
+<li>繼續完成手上的票</li>
+</ul>
+<h3 id="回答出來的問題">回答出來的問題</h3>
+<ul>
+<li><strong>Q:</strong></li>
+</ul>
+<h3 id="待回答的問題們">待回答的問題們</h3>
+<ul>
+<li>Q.1: stateless？</li>
+<li>Q.2: 查名詞 ：Template string 模板字串``</li>
+<li>Q.3: 什麼是Migration/ Migrate (回答不出來要被打屁屁了＠＠)</li>
+<li>Q.4: nullish vs falsy</li>
+<li>Q.5: upSert : upDate or insert/ onConflict</li>
+<li>Q.6: 資料庫 Constraints unique / PK</li>
+<li>Q.7: 什麼是dependency injection依賴注入</li>
+<li>Q.8: upSert : upDate or insert/ onConflict</li>
+<li>Q.9: 資料庫 Constraints unique / PK</li>
+<li>Q.10: useMemo, memonize(一種快取的方式), 閉包</li>
+</ul>
+<h3 id="遇到的問題">遇到的問題</h3>
+<ul>
+<li></li>
+</ul>
+<h2 id="今日心得">今日心得</h2>
+<h2 id="作業">作業</h2>
+<ol>
+<li>練習設定query，只用一個<code>memberId</code>,找出這個相關的<code>phone</code> &amp; <code>是否vaild</code>。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GetMemberPhones</span> <span style="color:#f92672">=</span>  <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">query GetMemberPhones($memberIdList: [String!]) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  member_phone(where: { member_id: { _in: $memberIdList } }) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    member_id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    phone
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    is_valid
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span></code></pre></div><ol start="2">
+<li>A:在Hasurq裡面，有<code>_in</code>, <code>_eq</code>的選項，他們代表什麼意思？<br>
+B:上面他們跟SQL對應的關係是？<br>
+C:他們分別吃什麼類型＆吐出什們類型</li>
+<li>GraphQL的基礎型別有哪些？（進階：如何自訂義型別）</li>
+<li>了解網頁的<code>七層協定</code>，如HTTP協定、封包等等</li>
+<li>延伸思考：為什麽要有型別？ 關於override</li>
+<li>進階題：記憶體配置</li>
+</ol>
+<p>Q：如何在要的時候，用useMutations打要的query出去
+Q:什麼時候用fetch, 什麼時候用useMutation, useQuery?
+有四種呼叫API的方式，它們的差異，適用於的地方</p>
+
+      
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a class="group btn btn-outline" href="/posts/urfit-day-13/" title="Urfit Day 13">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Previous page</span>
+            <span class="max-w-48 truncate">Urfit Day 13</span>
+          </div>
+        </a>
+        
+
+        
+        <a class="group btn btn-outline" href="/posts/urfit-day-11/" title="Urfit Day 11">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 group-hover:text-neutral-content/60 text-xs font-normal">Next page</span>
+            <span class="max-w-48 truncate">Urfit Day 11</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
+    </article>
+  </div>
+
+  
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 - 2025 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card card-compact bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">About Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hello I&rsquo;m Joanna, this is my blog</p>
+<p>我會在這邊分享我學習程式語言的心得與筆記</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2024 - 2025 Joanna&#39;s Blog
+  </p>
+  
+
+  
+  <p>🌟 A Hugo theme named Dream</p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'moon', status: 'y' },
+    { name: 'sunny', status: 'n' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center h-[32px] px-2 gap-2 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+    
+  
+  <script src="/js/grid.min.js"></script>
+
+
+
+
+  
+
+<script src="/js/main.min.js"></script>
+
+    
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
